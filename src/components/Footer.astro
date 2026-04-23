@@ -1,0 +1,65 @@
+---
+import { site } from '../content/site';
+const currentYear = new Date().getFullYear();
+---
+<footer class="mt-24 bg-navy-950 text-slate-100">
+  <div class="mx-auto max-w-6xl px-4 py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <div class="flex items-center gap-2 font-display text-xl font-semibold text-white">
+        <img src="/favicon.svg" alt="" width="28" height="28" class="w-7 h-7" />
+        <span>Omni Shine</span>
+      </div>
+      <p class="mt-4 text-sm text-slate-300 max-w-xs">
+        Family-run cleaning service in Oldham and surrounding towns. Founded {site.foundingYear} by {site.founder}.
+      </p>
+      <p class="mt-4 text-sm">
+        <a href={`mailto:${site.email}`} class="underline decoration-gold-400/60 underline-offset-4 hover:text-white">{site.email}</a>
+      </p>
+      <p class="mt-2 text-xs text-slate-400">
+        Mon–Fri 5pm–9pm · Sat–Sun 8am–9pm
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold tracking-wide uppercase text-white/90">Services</h2>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        {site.services.map(s => (
+          <li><a href={`/services/${s.slug}/`} class="hover:text-white">{s.name}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold tracking-wide uppercase text-white/90">Areas</h2>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li><a href="/areas/" class="hover:text-white font-medium">All 14 areas</a></li>
+        {site.areaPages.map(a => (
+          <li><a href={`/areas/${a.toLowerCase()}/`} class="hover:text-white">Cleaners in {a}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold tracking-wide uppercase text-white/90">Company</h2>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li><a href="/about/" class="hover:text-white">About</a></li>
+        <li><a href="/pricing/" class="hover:text-white">Pricing</a></li>
+        <li><a href="/faq/" class="hover:text-white">FAQ</a></li>
+        <li><a href="/contact/" class="hover:text-white">Contact</a></li>
+        <li><a href={site.googleBusinessUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white">Google Business Profile ↗</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto max-w-6xl px-4 py-5 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between text-xs text-slate-400">
+      <p>&copy; {currentYear} {site.name}. All rights reserved.</p>
+      <ul class="flex flex-wrap gap-x-5 gap-y-1">
+        <li><a href="/privacy/" class="hover:text-slate-200">Privacy</a></li>
+        <li><a href="/terms/" class="hover:text-slate-200">Terms</a></li>
+        <li><a href="/complaints/" class="hover:text-slate-200">Complaints</a></li>
+        <li><a href="/cookies/" class="hover:text-slate-200">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

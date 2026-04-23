@@ -1,0 +1,15 @@
+# Old WordPress slugs → new paths (301 permanent)
+/end-of-tenancy-cleaning-oldham/     /services/end-of-tenancy-cleaning-oldham/     301
+/commercial-cleaning-oldham/         /services/commercial-cleaning-oldham/         301
+/deep-cleaning-oldham/               /services/deep-cleaning-oldham/               301
+/domestic-cleaning-oldham/           /services/domestic-cleaning-oldham/           301
+/areas-we-serve/                     /areas/                                       301
+/about-omni-shine-cleaning-services/ /about/                                       301
+/complaints/                         /complaints/                                  200
+/privacy-policy/                     /privacy/                                     301
+/terms-conditions/                   /terms/                                       301
+/2026/01/19/hello-world/             /                                             301
+/hello-world/                        /                                             301
+
+# Drop www (Cloudflare also enforces)
+https://www.omnishine.co.uk/*  https://omnishine.co.uk/:splat  301!

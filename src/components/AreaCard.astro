@@ -1,0 +1,20 @@
+---
+interface Props {
+  href: string;
+  name: string;
+  hasPage?: boolean;
+}
+const { href, name, hasPage = true } = Astro.props;
+const Tag = hasPage ? 'a' : 'div';
+---
+<Tag
+  {...(hasPage ? { href } : {})}
+  class:list={[
+    'block rounded-xl border border-slate-200 bg-white p-4 text-center transition',
+    hasPage && 'hover:border-gold-400 hover:shadow-md hover:-translate-y-0.5 cursor-pointer',
+    !hasPage && 'opacity-80',
+  ]}
+>
+  <span class="block font-semibold text-navy-900">{name}</span>
+  <span class="block text-xs text-slate-500 mt-0.5">{hasPage ? `Cleaners in ${name}` : 'Also covered'}</span>
+</Tag>

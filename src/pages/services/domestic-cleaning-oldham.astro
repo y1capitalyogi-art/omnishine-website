@@ -1,0 +1,94 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import FaqList from '../../components/FaqList.astro';
+import AreaCard from '../../components/AreaCard.astro';
+import { site } from '../../content/site';
+import { serviceSchema, breadcrumbSchema, faqSchema } from '../../lib/schema';
+
+const s = site.services.find(x => x.slug === 'domestic-cleaning-oldham')!;
+const path = `/services/${s.slug}/`;
+const url = `${site.url}${path}`;
+
+const included = [
+  'Dusting, vacuuming, mopping throughout',
+  'Kitchen surfaces, hob and sink',
+  'Bathroom clean, sanitise and limescale removal',
+  'Bed-changing (if fresh sheets are left out)',
+  'Waste removal and end-of-visit tidy',
+  'All eco-friendly products and equipment included',
+];
+
+const localFaqs = [
+  { q: 'How often can you come?', a: 'Weekly, fortnightly, monthly, or a one-off. You pick the cadence — we turn up. Weekly and fortnightly slots get priority booking.' },
+  { q: 'Will the same cleaner come each visit?', a: 'Yes, wherever possible. Continuity matters — we learn your preferences, which cupboards hold what, how you like things folded.' },
+  { q: 'Do I need to be home for the clean?', a: 'No. Most clients give us a key or a key-safe code. We store keys securely with no address attached, and return them on request within 7 days.' },
+  { q: 'What if I need extra hours one week?', a: 'Just message us the day before. Extra hours are charged at the same £18/hr rate.' },
+  { q: 'Do you clean windows and ovens as part of a regular visit?', a: 'Interior glass and stove-top yes. Full oven deep-cleans and exterior windows are add-ons — we will quote separately.' },
+];
+
+const schemas = [
+  serviceSchema(s),
+  breadcrumbSchema([
+    { name: 'Home', url: `${site.url}/` },
+    { name: 'Services', url: `${site.url}/#services` },
+    { name: s.name, url },
+  ]),
+  faqSchema(localFaqs),
+];
+---
+<Page
+  title="Domestic Cleaning in Oldham | From £18/hr | Omni Shine"
+  description="Weekly, fortnightly and one-off domestic cleaning across Oldham from £18/hr. Eco-friendly products, weekend slots, and the same cleaner each visit."
+  path={path}
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Services',href:'/#services'},{name:s.name}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <header>
+      <span class="inline-flex items-center rounded-full bg-gold-400/20 px-3 py-1 text-xs font-semibold text-navy-900">From £{s.from}{s.unit}</span>
+      <h1 class="mt-4 font-display text-4xl md:text-5xl text-navy-900 tracking-tight">Domestic Cleaning in Oldham</h1>
+      <p class="mt-5 text-lg text-slate-700 leading-relaxed">
+        Reliable, friendly home cleaning across Oldham and 13 surrounding towns — from <strong>£{s.from} per hour</strong>, two-hour minimum. Eco-friendly products, weekend slots, and the same cleaner each visit wherever possible.
+      </p>
+    </header>
+
+    <div class="mt-10 rounded-2xl bg-slate-50 border border-slate-200 p-6 md:p-8">
+      <h2 class="font-display text-xl text-navy-900">What's included as standard</h2>
+      <ul class="mt-4 grid gap-3 text-slate-700 md:grid-cols-2">
+        {included.map(i => (
+          <li class="flex items-start gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-gold-500 mt-0.5 shrink-0" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{i}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">How it works</h2>
+    <ol class="mt-4 space-y-4 list-decimal pl-6 text-slate-700 marker:text-gold-500 marker:font-bold">
+      <li><strong>Tell us what you need.</strong> Postcode, property size, and whether you want weekly, fortnightly, or a one-off.</li>
+      <li><strong>We confirm a quote.</strong> Usually £{s.from}/hr for domestic work, with a two-hour minimum. Fixed quotes available for deep or one-off cleans.</li>
+      <li><strong>We turn up, on time.</strong> Same cleaner each visit wherever possible. If we're ever late, we tell you.</li>
+      <li><strong>Feedback welcome.</strong> Not quite right? 72-hour re-clean at no charge.</li>
+    </ol>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Domestic cleaning across Oldham &amp; Rochdale</h2>
+    <p class="mt-4 text-slate-700">We cover <strong>{site.areas.length} towns</strong> including {site.areas.slice(0, -1).join(', ')} and {site.areas.at(-1)}.</p>
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      {site.areaPages.map(a => <AreaCard href={`/areas/${a.toLowerCase()}/`} name={a} />)}
+    </div>
+    <p class="mt-4 text-sm"><a href="/areas/" class="text-navy-700 font-medium hover:underline">See all {site.areas.length} areas →</a></p>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions about domestic cleaning in Oldham</h2>
+    <div class="mt-4"><FaqList items={localFaqs} /></div>
+
+    <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
+      <h2 class="font-display text-2xl text-navy-900">Get your free domestic-cleaning quote</h2>
+      <p class="mt-2 text-slate-600">Takes 30 seconds. No obligation.</p>
+      <div class="mt-6"><QuoteForm /></div>
+    </div>
+  </article>
+</Page>

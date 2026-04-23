@@ -1,0 +1,58 @@
+---
+import Page from '../layouts/Page.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../content/site';
+import { breadcrumbSchema } from '../lib/schema';
+
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: `${site.url}/` },
+  { name: 'Complaints', url: `${site.url}/complaints/` },
+])];
+---
+<Page
+  title="Complaints Procedure | Omni Shine Cleaning"
+  description="How to complain if something goes wrong, and how we promise to respond. Three-step process with clear timings."
+  path="/complaints/"
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Complaints'}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12 space-y-6 text-slate-700 leading-relaxed">
+    <h1 class="font-display text-4xl text-navy-900">Complaints procedure</h1>
+    <p class="text-lg">We aim to give a top-quality service every single visit. When something's wrong, we want to know so we can fix it — fast and fairly.</p>
+
+    <div class="mt-8 space-y-6">
+      <div class="rounded-2xl border border-slate-200 p-6">
+        <div class="flex items-start gap-4">
+          <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy-900 text-white font-display font-bold">1</span>
+          <div>
+            <h2 class="font-display text-xl text-navy-900">Tell us, in writing</h2>
+            <p class="mt-2">Email <a href={`mailto:${site.email}`} class="underline">{site.email}</a> within 72 hours of the visit. Include a brief description, the date of the clean, and photos if you have them.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-slate-200 p-6">
+        <div class="flex items-start gap-4">
+          <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy-900 text-white font-display font-bold">2</span>
+          <div>
+            <h2 class="font-display text-xl text-navy-900">We acknowledge and respond</h2>
+            <p class="mt-2">We acknowledge within two working hours during opening times (Mon–Fri 5pm–9pm, Sat–Sun 8am–9pm). We propose a remedy within three working days. Most complaints are resolved with a free 72-hour re-clean — we'd always rather put it right than argue.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-slate-200 p-6">
+        <div class="flex items-start gap-4">
+          <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy-900 text-white font-display font-bold">3</span>
+          <div>
+            <h2 class="font-display text-xl text-navy-900">Escalate, if you need to</h2>
+            <p class="mt-2">If we can't agree a resolution after 28 days, you are free to seek independent advice from <a href="https://www.citizensadvice.org.uk/" class="underline">Citizens Advice</a>. Data-specific complaints (how we handled your personal data) can be raised with the <a href="https://ico.org.uk/" class="underline">Information Commissioner's Office</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-8 text-sm text-slate-500">We take every complaint seriously and review them to improve our service. Your feedback helps future clients.</p>
+  </article>
+</Page>

@@ -1,0 +1,55 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { site } from '../../content/site';
+import { breadcrumbSchema } from '../../lib/schema';
+
+const area = 'Shaw';
+const slug = area.toLowerCase();
+const path = `/areas/${slug}/`;
+const url = `${site.url}${path}`;
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: `${site.url}/` },
+  { name: 'Areas', url: `${site.url}/areas/` },
+  { name: area, url },
+])];
+---
+<Page
+  title={`Cleaners in Shaw, Oldham | From £18/hr | Omni Shine`}
+  description={`Domestic, commercial and deep cleaning in Shaw and Crompton from £18/hr. Family-run, eco-friendly, weekends included. Free quotes within two working hours.`}
+  path={path}
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Areas',href:'/areas/'},{name: area}]} />
+
+  <section class="mx-auto max-w-3xl px-4 py-12">
+    <h1 class="font-display text-4xl md:text-5xl text-navy-900">Cleaners in {area}</h1>
+    <p class="mt-5 text-lg text-slate-700 leading-relaxed">
+      Omni Shine covers <strong>Shaw and Crompton</strong> every week — from Buckstones Road through Beal Vale and out to High Crompton. Domestic cleaning from £18/hr, end-of-tenancy from £180, and deep cleans from £150, with the same cleaner each visit wherever possible.
+    </p>
+
+    <h2 class="mt-12 font-display text-2xl text-navy-900">Services available in {area}</h2>
+    <ul class="mt-4 grid gap-2 text-slate-700 md:grid-cols-2">
+      {site.services.map(s => (
+        <li class="flex items-start gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-gold-500 mt-0.5 shrink-0" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <a href={`/services/${s.slug}/`} class="underline decoration-slate-200 underline-offset-4 hover:text-navy-900 hover:decoration-navy-700">{s.name}</a>
+          <span class="text-slate-500 text-sm">· from £{s.from}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h2 class="mt-12 font-display text-2xl text-navy-900">Why {area} clients choose us</h2>
+    <p class="mt-4 text-slate-700">{area} is minutes from our base, so we offer reliable weekly and fortnightly slots with no travel surcharge. Most of our Shaw clients book Tuesday or Friday evenings — if that suits you, ask on the form and we'll likely have a slot.</p>
+
+    <h2 class="mt-12 font-display text-2xl text-navy-900">Nearby areas we also cover</h2>
+    <p class="mt-2 text-slate-700">Royton, Oldham, Chadderton, Moorside, Rochdale — <a href="/areas/" class="underline hover:text-navy-900">see all {site.areas.length} towns</a>.</p>
+
+    <div class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
+      <h2 class="font-display text-2xl text-navy-900">Free quote for {area}</h2>
+      <p class="mt-2 text-slate-600">We reply within two working hours during opening times.</p>
+      <div class="mt-6"><QuoteForm /></div>
+    </div>
+  </section>
+</Page>

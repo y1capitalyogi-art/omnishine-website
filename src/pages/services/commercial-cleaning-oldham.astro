@@ -1,0 +1,95 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import FaqList from '../../components/FaqList.astro';
+import AreaCard from '../../components/AreaCard.astro';
+import { site } from '../../content/site';
+import { serviceSchema, breadcrumbSchema, faqSchema } from '../../lib/schema';
+
+const s = site.services.find(x => x.slug === 'commercial-cleaning-oldham')!;
+const path = `/services/${s.slug}/`;
+const url = `${site.url}${path}`;
+
+const included = [
+  'Desks, surfaces and meeting rooms wiped down',
+  'Kitchens and washrooms restocked and sanitised',
+  'Bins emptied, liners replaced, recycling separated',
+  'Carpets vacuumed, hard floors mopped',
+  'Glass partitions and doors spot-cleaned',
+  'Monthly, weekly or daily schedules — your call',
+];
+
+const localFaqs = [
+  { q: 'Can you work outside office hours?', a: 'Yes — evenings after 5pm and weekends are our standard slots for commercial work, so we never interrupt your team.' },
+  { q: 'Can you invoice us monthly?', a: 'Yes. Monthly invoices with 7-day terms, or weekly if you prefer. Bank transfer, card, or Stripe.' },
+  { q: 'Do you have references?', a: 'We are a new business (founded 2026), but we are happy to put you in touch with our existing commercial client in Oldham. Ask on the quote form.' },
+  { q: 'Do you supply consumables?', a: 'Hand soap, loo roll, and blue roll can be bundled into your contract at cost + 10%. Or you supply them — up to you.' },
+  { q: 'Do you have a vetting process for cleaners?', a: 'All team members complete our induction and are ID-verified before their first commercial visit. DBS checks are available on request for sensitive sites.' },
+];
+
+const schemas = [
+  serviceSchema(s),
+  breadcrumbSchema([
+    { name: 'Home', url: `${site.url}/` },
+    { name: 'Services', url: `${site.url}/#services` },
+    { name: s.name, url },
+  ]),
+  faqSchema(localFaqs),
+];
+---
+<Page
+  title="Commercial & Office Cleaning in Oldham | From £22/hr | Omni Shine"
+  description="Office, retail and shared-workspace cleaning in Oldham from £22/hr. Evenings and weekends, discreet, eco-friendly. Monthly invoicing available."
+  path={path}
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Services',href:'/#services'},{name:s.name}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <header>
+      <span class="inline-flex items-center rounded-full bg-gold-400/20 px-3 py-1 text-xs font-semibold text-navy-900">From £{s.from}{s.unit}</span>
+      <h1 class="mt-4 font-display text-4xl md:text-5xl text-navy-900 tracking-tight">Commercial Cleaning in Oldham</h1>
+      <p class="mt-5 text-lg text-slate-700 leading-relaxed">
+        Discreet, reliable cleaning for offices, retail units, salons, studios and shared workspaces across Oldham and Rochdale — from <strong>£{s.from}/hr</strong>. Evenings and weekends as standard, so your team walks into a spotless space on Monday.
+      </p>
+    </header>
+
+    <div class="mt-10 rounded-2xl bg-slate-50 border border-slate-200 p-6 md:p-8">
+      <h2 class="font-display text-xl text-navy-900">What a standard commercial visit covers</h2>
+      <ul class="mt-4 grid gap-3 text-slate-700 md:grid-cols-2">
+        {included.map(i => (
+          <li class="flex items-start gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-gold-500 mt-0.5 shrink-0" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{i}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Who we work with in Oldham</h2>
+    <p class="mt-4 text-slate-700">Small and mid-sized offices (up to 30 desks), retail units on Yorkshire Street and surrounding high streets, independent salons and studios, and shared workspaces across the borough.</p>
+
+    <h2 class="mt-10 font-display text-2xl text-navy-900">Scheduling that fits your business</h2>
+    <ul class="mt-4 space-y-3 text-slate-700">
+      <li><strong>Daily:</strong> Mon–Fri evenings, ideal for customer-facing spaces.</li>
+      <li><strong>Weekly or fortnightly:</strong> Any day, any time after 5pm or before 9am.</li>
+      <li><strong>One-off deep cleans:</strong> For lease handovers, rebrands, or after events.</li>
+    </ul>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Commercial cleaning near your business</h2>
+    <p class="mt-4 text-slate-700">We work across all {site.areas.length} towns we serve.</p>
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      {site.areaPages.map(a => <AreaCard href={`/areas/${a.toLowerCase()}/`} name={a} />)}
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions about commercial cleaning</h2>
+    <div class="mt-4"><FaqList items={localFaqs} /></div>
+
+    <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
+      <h2 class="font-display text-2xl text-navy-900">Get your commercial cleaning quote</h2>
+      <p class="mt-2 text-slate-600">Site walk-throughs available. We usually reply within two working hours.</p>
+      <div class="mt-6"><QuoteForm /></div>
+    </div>
+  </article>
+</Page>

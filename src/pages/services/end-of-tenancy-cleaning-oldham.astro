@@ -1,0 +1,104 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import FaqList from '../../components/FaqList.astro';
+import AreaCard from '../../components/AreaCard.astro';
+import { site } from '../../content/site';
+import { serviceSchema, breadcrumbSchema, faqSchema } from '../../lib/schema';
+
+const s = site.services.find(x => x.slug === 'end-of-tenancy-cleaning-oldham')!;
+const path = `/services/${s.slug}/`;
+const url = `${site.url}${path}`;
+
+const included = [
+  'Every room cleaned to letting-agent inventory standard',
+  'Full oven, hob, extractor and microwave deep clean',
+  'Inside and outside of all cupboards, drawers and wardrobes',
+  'Fridge and freezer defrosted and wiped (if switched off)',
+  'Bathrooms descaled — tiles, grout, fixtures, screens',
+  'Skirtings, door frames, window sills, light switches',
+  'Interior windows, mirrors and glass',
+  'Carpets vacuumed; hard floors mopped',
+  'Bins emptied, cobwebs removed, final walk-through',
+];
+
+const localFaqs = [
+  { q: 'Do you guarantee I will get my deposit back?', a: 'No cleaner can guarantee a deposit-back decision — that is down to the agent and inventory clerk. What we do guarantee is a free 72-hour re-clean if your agent reports cleaning issues, so the letting agent has no cleaning-related reason to withhold your deposit.' },
+  { q: 'Do you clean carpets as part of end-of-tenancy?', a: 'We vacuum thoroughly and spot-treat marks as standard. Professional carpet extraction (often required by letting agents) is a £40–£80 add-on depending on property size — we will include it in the quote if you ask.' },
+  { q: 'Can you come at short notice?', a: 'Often yes. Weekend slots fill fastest — get in touch as soon as you have a check-out date and we will squeeze you in.' },
+  { q: 'Do I need to be there during the clean?', a: 'No. Leave the keys with us, with your agent, or in a key-safe. We can meet the check-out inventory clerk if that helps.' },
+  { q: 'What if the property is exceptionally dirty?', a: 'We will quote after a short photo walk-through. Excess mould, pet residue, or smoker residue attracts a supplement, agreed in writing before we start.' },
+];
+
+const schemas = [
+  serviceSchema(s),
+  breadcrumbSchema([
+    { name: 'Home', url: `${site.url}/` },
+    { name: 'Services', url: `${site.url}/#services` },
+    { name: s.name, url },
+  ]),
+  faqSchema(localFaqs),
+];
+---
+<Page
+  title="End of Tenancy Cleaning in Oldham | From £180 | Omni Shine"
+  description="Deposit-back end-of-tenancy cleans in Oldham from £180. Meets letting-agent standards with a free 72-hour re-clean guarantee."
+  path={path}
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Services',href:'/#services'},{name:s.name}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <header>
+      <span class="inline-flex items-center rounded-full bg-gold-400/20 px-3 py-1 text-xs font-semibold text-navy-900">From £{s.from} fixed · 72-hour re-clean</span>
+      <h1 class="mt-4 font-display text-4xl md:text-5xl text-navy-900 tracking-tight">End of Tenancy Cleaning in Oldham</h1>
+      <p class="mt-5 text-lg text-slate-700 leading-relaxed">
+        Deposit-back cleans that meet letting-agent inventory standards — <strong>from £{s.from}</strong>, fixed quote, with a free 72-hour re-clean if the agent flags anything. We clean to the industry end-of-tenancy checklist.
+      </p>
+    </header>
+
+    <div class="mt-10 rounded-2xl bg-slate-50 border border-slate-200 p-6 md:p-8">
+      <h2 class="font-display text-xl text-navy-900">The full end-of-tenancy checklist</h2>
+      <ul class="mt-4 grid gap-3 text-slate-700 md:grid-cols-2">
+        {included.map(i => (
+          <li class="flex items-start gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-gold-500 mt-0.5 shrink-0" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{i}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Fixed prices for end-of-tenancy cleans</h2>
+    <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-slate-50 text-slate-600"><tr><th class="p-3">Property</th><th class="p-3">From</th></tr></thead>
+        <tbody class="text-slate-800">
+          <tr class="border-t border-slate-200"><td class="p-3">Studio / 1-bed flat</td><td class="p-3">£180</td></tr>
+          <tr class="border-t border-slate-200"><td class="p-3">2-bed house or flat</td><td class="p-3">£240</td></tr>
+          <tr class="border-t border-slate-200"><td class="p-3">3-bed house</td><td class="p-3">£320</td></tr>
+          <tr class="border-t border-slate-200"><td class="p-3">4+ bed</td><td class="p-3">On quote</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Our re-clean guarantee</h2>
+    <p class="mt-4 text-slate-700">If your letting agent flags any cleaning issue during check-out, tell us within 72 hours and we will return to re-clean the flagged areas at no extra charge. This is the service you are paying for — we stand behind it.</p>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Areas we cover for end-of-tenancy</h2>
+    <p class="mt-4 text-slate-700">All {site.areas.length} towns in the Oldham and Rochdale boroughs.</p>
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      {site.areaPages.map(a => <AreaCard href={`/areas/${a.toLowerCase()}/`} name={a} />)}
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions</h2>
+    <div class="mt-4"><FaqList items={localFaqs} /></div>
+
+    <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
+      <h2 class="font-display text-2xl text-navy-900">Book your end-of-tenancy clean</h2>
+      <p class="mt-2 text-slate-600">Tell us check-out date, bedroom count and postcode — we'll fix the quote today.</p>
+      <div class="mt-6"><QuoteForm /></div>
+    </div>
+  </article>
+</Page>

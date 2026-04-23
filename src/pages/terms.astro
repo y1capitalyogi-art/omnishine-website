@@ -1,0 +1,61 @@
+---
+import Page from '../layouts/Page.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../content/site';
+import { breadcrumbSchema } from '../lib/schema';
+
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: `${site.url}/` },
+  { name: 'Terms & conditions', url: `${site.url}/terms/` },
+])];
+const updated = '22 April 2026';
+---
+<Page
+  title="Terms & Conditions | Omni Shine Cleaning"
+  description="Terms and conditions for Omni Shine Cleaning services in Oldham."
+  path="/terms/"
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Terms & conditions'}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12 space-y-6 text-slate-700 leading-relaxed">
+    <h1 class="font-display text-4xl text-navy-900">Terms &amp; conditions</h1>
+    <p class="text-sm text-slate-500">Last updated: {updated}.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">1. These terms</h2>
+    <p>These terms apply to all cleaning services provided by {site.name} (<em>"we", "us"</em>). By booking a service, you agree to them.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">2. Quotes and pricing</h2>
+    <p>Quotes are valid for 30 days. Hourly services are charged to the nearest 15 minutes after the first billed hour. Fixed-price services (deep cleaning, end-of-tenancy, after-builders) assume a property in normally-lived-in condition; exceptional dirt, mould, pet residue, smoker residue or hoarded waste may attract a supplement, which we will agree with you in writing before work starts.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">3. Payment</h2>
+    <p>We accept bank transfer, cash, card and Stripe links. Invoices for commercial work are due within seven days of issue unless agreed otherwise. Late payment interest may be charged in line with the Late Payment of Commercial Debts (Interest) Act 1998 where applicable.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">4. Cancellations</h2>
+    <p>Please give at least 24 hours' notice of cancellation. Less than 24 hours' notice may be charged at 50% of the booking value to compensate for the lost slot. If we cancel a scheduled clean for any reason, there is no charge and we will prioritise rescheduling.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">5. Re-clean guarantee</h2>
+    <p>If any area does not meet our standard, we will return and re-clean it at no charge, provided you notify us within 72 hours of the original clean. End-of-tenancy re-cleans are triggered by documented letting-agent feedback within the same 72-hour window.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">6. Liability</h2>
+    <p>We take reasonable care of your property at all times. Our liability for any single claim is limited to the value of the individual booking, and our total liability across all bookings under these terms is capped at £5,000. We are not liable for indirect or consequential loss. Nothing in these terms limits our liability for death or personal injury caused by negligence, fraud, or any liability that cannot be excluded or limited under UK law.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">7. Pre-existing damage and wear</h2>
+    <p>We are not responsible for damage resulting from pre-existing wear, poor installation, or conditions that could not reasonably be identified before cleaning (e.g. hidden water damage, loose tiles, unstable fittings). We will point out and photograph any such condition we notice.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">8. Keys and access</h2>
+    <p>Where we hold a key or access code, we store it securely with no address or name attached. We will return keys on request within seven days. Lost keys: we are liable for the cost of a like-for-like replacement only, to a maximum of £100 per set.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">9. Products and equipment</h2>
+    <p>We supply eco-friendly products and all equipment as standard. If you have allergies or sensitivities, please tell us in writing and we will use fragrance-free alternatives. If you prefer we use your products, we are not liable for any surface damage caused by those products.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">10. Complaints</h2>
+    <p>See our <a href="/complaints/" class="underline">complaints procedure</a> for the full process.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">11. Governing law</h2>
+    <p>These terms are governed by the laws of England and Wales, and disputes are subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">12. Contact</h2>
+    <p>Email <a href={`mailto:${site.email}`} class="underline hover:text-navy-900">{site.email}</a>.</p>
+  </article>
+</Page>

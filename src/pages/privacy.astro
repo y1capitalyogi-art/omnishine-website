@@ -1,0 +1,65 @@
+---
+import Page from '../layouts/Page.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../content/site';
+import { breadcrumbSchema } from '../lib/schema';
+
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: `${site.url}/` },
+  { name: 'Privacy policy', url: `${site.url}/privacy/` },
+])];
+const updated = '22 April 2026';
+---
+<Page
+  title="Privacy Policy | Omni Shine Cleaning"
+  description="How Omni Shine Cleaning handles your personal data under UK GDPR. Cookieless analytics, minimal data, your rights."
+  path="/privacy/"
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Privacy policy'}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12 space-y-6 text-slate-700 leading-relaxed">
+    <h1 class="font-display text-4xl text-navy-900">Privacy policy</h1>
+    <p class="text-sm text-slate-500">Last updated: {updated}.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">1. Who we are</h2>
+    <p>Omni Shine Cleaning (<em>"we", "us", "our"</em>) is a cleaning service based in Oldham, Greater Manchester, founded and operated by {site.founder}. Our contact email is <a href={`mailto:${site.email}`} class="underline hover:text-navy-900">{site.email}</a>. We are the data controller for any personal data you provide to us through this website.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">2. What we collect</h2>
+    <p>When you use our quote form we collect:</p>
+    <ul class="list-disc pl-6 space-y-1">
+      <li>Your name</li>
+      <li>Your email address</li>
+      <li>Your postcode</li>
+      <li>The service you are enquiring about</li>
+      <li>Any message you add</li>
+      <li>Technical metadata (timestamp, IP address) needed for spam protection</li>
+    </ul>
+    <p>We do not use tracking cookies. Our analytics provider, Cloudflare Web Analytics, is privacy-preserving and does not identify individual visitors or store cookies on your device.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">3. Why we collect it (lawful basis)</h2>
+    <p>We process this information under Article 6(1)(b) of UK GDPR — to take steps at your request prior to entering into a contract (preparing a quote), and to perform that contract if you engage us. For the consent checkbox on the form we rely on Article 6(1)(a) — your explicit consent, which you can withdraw at any time.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">4. Who we share it with</h2>
+    <ul class="list-disc pl-6 space-y-1">
+      <li><strong>Resend, Inc.</strong> — transactional email provider that delivers your submission to our inbox.</li>
+      <li><strong>Cloudflare, Inc.</strong> — hosts this website, runs the form handler, and provides Turnstile anti-spam.</li>
+    </ul>
+    <p>We do not sell your data. We do not share it with marketing partners.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">5. International transfers</h2>
+    <p>Our processors (Cloudflare and Resend) are US-based. Transfers are covered by their UK GDPR-compliant data processing agreements and, where applicable, Standard Contractual Clauses and the UK International Data Transfer Addendum.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">6. How long we keep it</h2>
+    <p>Enquiry emails are retained for up to 24 months. If you become a regular client, we retain correspondence for the duration of the service relationship plus 24 months for legal and accounting purposes. Delete-on-request always available.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">7. Your rights under UK GDPR</h2>
+    <p>You have the right to: access your data, have it corrected, have it erased, restrict processing, object to processing, and have it sent to another controller (portability). To exercise any of these rights, email <a href={`mailto:${site.email}`} class="underline">{site.email}</a>. We respond within 30 days.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">8. Security</h2>
+    <p>All submissions are sent over HTTPS. We use Cloudflare Turnstile and a hidden honeypot field to prevent spam and abuse. Emails are stored in mailboxes protected by strong passwords and 2FA.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">9. Complaints</h2>
+    <p>If you are unhappy with how we have handled your data, you can complain to the Information Commissioner's Office at <a href="https://ico.org.uk/" class="underline">ico.org.uk</a> or call 0303 123 1113.</p>
+  </article>
+</Page>

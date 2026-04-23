@@ -1,0 +1,125 @@
+---
+import { site } from '../content/site';
+const TURNSTILE_SITEKEY = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '1x00000000000000000000AA';
+const services = site.services.map(s => s.name);
+---
+<form id="quote-form" class="space-y-5" method="POST" action="/api/quote" novalidate>
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="qf-name" class="block text-sm font-semibold text-slate-800">Your name</label>
+      <input
+        id="qf-name" name="name" required minlength="2" maxlength="80" autocomplete="name"
+        class="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-[15px] shadow-sm focus:border-navy-700 focus:ring-2 focus:ring-navy-500/20"
+      />
+    </div>
+    <div>
+      <label for="qf-email" class="block text-sm font-semibold text-slate-800">Email</label>
+      <input
+        id="qf-email" name="email" type="email" required maxlength="120" autocomplete="email"
+        class="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-[15px] shadow-sm focus:border-navy-700 focus:ring-2 focus:ring-navy-500/20"
+      />
+    </div>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="qf-postcode" class="block text-sm font-semibold text-slate-800">Postcode</label>
+      <input
+        id="qf-postcode" name="postcode" required minlength="2" maxlength="10" autocomplete="postal-code"
+        placeholder="e.g. OL1 1AA"
+        class="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-[15px] shadow-sm focus:border-navy-700 focus:ring-2 focus:ring-navy-500/20"
+      />
+    </div>
+    <div>
+      <label for="qf-service" class="block text-sm font-semibold text-slate-800">Service</label>
+      <select
+        id="qf-service" name="service" required
+        class="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-[15px] shadow-sm focus:border-navy-700 focus:ring-2 focus:ring-navy-500/20"
+      >
+        <option value="">Choose a service…</option>
+        {services.map(s => <option value={s}>{s}</option>)}
+        <option value="Other">Other / not sure</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label for="qf-message" class="block text-sm font-semibold text-slate-800">
+      Message <span class="text-slate-400 text-xs font-normal">(optional — bedrooms, timing, anything helpful)</span>
+    </label>
+    <textarea
+      id="qf-message" name="message" rows="4" maxlength="1500"
+      class="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-[15px] shadow-sm focus:border-navy-700 focus:ring-2 focus:ring-navy-500/20"
+    ></textarea>
+  </div>
+
+  <!-- Honeypot (hidden from users, bots fill it) -->
+  <div class="hidden" aria-hidden="true">
+    <label>Website<input type="text" name="company_site" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  <label class="flex gap-3 text-sm text-slate-600">
+    <input type="checkbox" name="consent" value="on" required class="mt-0.5 h-4 w-4 rounded border-slate-300 text-navy-700 focus:ring-navy-500" />
+    <span>I agree to the <a href="/privacy/" class="underline hover:text-navy-900">privacy policy</a> and consent to being contacted about my enquiry.</span>
+  </label>
+
+  <div class="cf-turnstile" data-sitekey={TURNSTILE_SITEKEY} data-size="flexible" data-theme="light"></div>
+
+  <button
+    type="submit"
+    class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gold-400 px-6 py-3.5 text-base font-semibold text-navy-950 shadow-md hover:bg-gold-500 disabled:opacity-60 disabled:cursor-wait transition"
+  >
+    <span data-submit-label>Send my quote request</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+  </button>
+
+  <p id="form-result" role="status" aria-live="polite" class="text-sm"></p>
+
+  <p class="text-xs text-slate-500 flex items-start gap-2">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0 text-slate-400" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>We reply within two working hours during opening times (Mon–Fri 5pm–9pm, Sat–Sun 8am–9pm).</span>
+  </p>
+</form>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+  const form = document.getElementById('quote-form');
+  const result = document.getElementById('form-result');
+  const label = form?.querySelector('[data-submit-label]');
+  const button = form?.querySelector('button[type="submit"]');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    result.textContent = '';
+    if (!(form.checkValidity())) { form.reportValidity(); return; }
+    button.disabled = true;
+    if (label) label.textContent = 'Sending…';
+    try {
+      const fd = new FormData(form);
+      const res = await fetch('/api/quote', { method: 'POST', body: fd });
+      if (res.ok) {
+        form.outerHTML = `
+          <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-6 md:p-8 text-emerald-900">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <h3 class="font-display text-xl font-semibold">Thanks — we got your request.</h3>
+            </div>
+            <p class="mt-4 text-[15px]">We'll reply to you during opening hours, usually within two working hours. A copy has been sent to your inbox. If you don't see it, please check your spam folder.</p>
+          </div>`;
+      } else {
+        const body = await res.json().catch(() => ({}));
+        result.textContent = body.error || 'Something went wrong. Please email info@omnishine.co.uk directly.';
+        result.className = 'text-sm text-red-700 font-medium';
+        button.disabled = false;
+        if (label) label.textContent = 'Send my quote request';
+      }
+    } catch (err) {
+      result.textContent = 'Network error. Please email info@omnishine.co.uk directly.';
+      result.className = 'text-sm text-red-700 font-medium';
+      button.disabled = false;
+      if (label) label.textContent = 'Send my quote request';
+    }
+  });
+</script>

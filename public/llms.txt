@@ -1,0 +1,45 @@
+# Omni Shine Cleaning
+
+> Family-run professional cleaning service based in Oldham, Greater Manchester. Founded in 2026 by Sangita Chavda. Serves 14 towns around Oldham. Contact form only — no phone. Email: info@omnishine.co.uk.
+
+## About
+- Business name: Omni Shine Cleaning
+- Founder: Sangita Chavda
+- Founded: 2026
+- Location: Oldham, Greater Manchester, United Kingdom
+- Contact email: info@omnishine.co.uk
+- Opening hours: Mon–Fri 5pm–9pm, Sat–Sun 8am–9pm
+
+## Services and starting prices
+- Domestic cleaning — from £18 / hour (two-hour minimum)
+- Commercial cleaning — from £22 / hour
+- Deep cleaning — from £150 (one-off, fixed)
+- End-of-tenancy cleaning — from £180 (fixed, with 72-hour re-clean guarantee)
+- After-builders cleaning — from £200 (fixed)
+
+## Areas served
+Oldham, Shaw, Royton, Chadderton, Failsworth, Lees, Uppermill, Saddleworth, Springhead, Greenfield, Grotton, Moorside, Rochdale, Delph.
+
+## Payment
+Bank transfer, cash, card, Stripe link. Invoices for commercial clients with 7-day terms.
+
+## Key pages
+- [Home](https://omnishine.co.uk/)
+- [Pricing](https://omnishine.co.uk/pricing/)
+- [FAQ](https://omnishine.co.uk/faq/)
+- [Contact / free quote](https://omnishine.co.uk/contact/)
+- [Areas we cover](https://omnishine.co.uk/areas/)
+- [About](https://omnishine.co.uk/about/)
+
+## Services (detail pages)
+- [Domestic cleaning in Oldham](https://omnishine.co.uk/services/domestic-cleaning-oldham/)
+- [Commercial cleaning in Oldham](https://omnishine.co.uk/services/commercial-cleaning-oldham/)
+- [Deep cleaning in Oldham](https://omnishine.co.uk/services/deep-cleaning-oldham/)
+- [End-of-tenancy cleaning in Oldham](https://omnishine.co.uk/services/end-of-tenancy-cleaning-oldham/)
+- [After-builders cleaning in Oldham](https://omnishine.co.uk/services/after-builders-cleaning-oldham/)
+
+## Guarantees
+- 72-hour re-clean guarantee on any missed areas
+- Eco-friendly products included, fragrance-free on request
+- Same cleaner each visit wherever possible
+- No weekend surcharge

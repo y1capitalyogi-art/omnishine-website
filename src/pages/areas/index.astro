@@ -1,0 +1,46 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AreaCard from '../../components/AreaCard.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import { site } from '../../content/site';
+import { breadcrumbSchema } from '../../lib/schema';
+
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: `${site.url}/` },
+  { name: 'Areas we cover', url: `${site.url}/areas/` },
+])];
+---
+<Page
+  title="Areas We Cover Around Oldham | Omni Shine Cleaning"
+  description="Cleaning services across Oldham, Shaw, Royton, Chadderton, Failsworth, Saddleworth, Rochdale and 8 more towns around Greater Manchester."
+  path="/areas/"
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Areas we cover'}]} />
+
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <h1 class="font-display text-4xl md:text-5xl text-navy-900">Areas we cover around Oldham</h1>
+    <p class="mt-5 text-lg text-slate-700 max-w-2xl">We operate across {site.areas.length} towns in the Oldham and Rochdale boroughs. Click your area for local detail — or skip straight to a free quote.</p>
+
+    <div class="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+      {site.areas.map(a => (
+        <AreaCard
+          href={`/areas/${a.toLowerCase()}/`}
+          name={a}
+          hasPage={(site.areaPages as readonly string[]).includes(a)}
+        />
+      ))}
+    </div>
+
+    <div class="mt-10 rounded-2xl bg-slate-50 border border-slate-200 p-6">
+      <h2 class="font-display text-xl text-navy-900">Not on the list?</h2>
+      <p class="mt-2 text-slate-700">If you're just outside — Middleton, Ashton, Mossley, Stalybridge, Littleborough, Milnrow — drop us a note. We often still cover these with no travel surcharge.</p>
+    </div>
+
+    <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
+      <h2 class="font-display text-2xl text-navy-900">Get a free local quote</h2>
+      <div class="mt-6"><QuoteForm /></div>
+    </div>
+  </section>
+</Page>

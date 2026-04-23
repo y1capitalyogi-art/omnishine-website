@@ -1,0 +1,8 @@
+---
+import FaqItem from './FaqItem.astro';
+interface Props { items: { q: string; a: string }[] }
+const { items } = Astro.props;
+---
+<div class="mx-auto max-w-3xl">
+  {items.map((it, i) => <FaqItem q={it.q} a={it.a} open={i === 0} />)}
+</div>

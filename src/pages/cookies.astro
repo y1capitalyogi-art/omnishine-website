@@ -1,0 +1,41 @@
+---
+import Page from '../layouts/Page.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../content/site';
+import { breadcrumbSchema } from '../lib/schema';
+
+const schemas = [breadcrumbSchema([
+  { name: 'Home', url: `${site.url}/` },
+  { name: 'Cookies', url: `${site.url}/cookies/` },
+])];
+---
+<Page
+  title="Cookies Policy | Omni Shine Cleaning"
+  description="Omni Shine Cleaning does not use tracking cookies. Here's the detail on the one strictly-necessary cookie our spam protection may set."
+  path="/cookies/"
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Cookies'}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12 space-y-6 text-slate-700 leading-relaxed">
+    <h1 class="font-display text-4xl text-navy-900">Cookies policy</h1>
+    <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-5 text-emerald-900">
+      <p class="font-semibold">Short version</p>
+      <p class="mt-1 text-sm">We don't use tracking cookies. No advertising pixels, no marketing cookies, no cross-site tracking — that's why this site doesn't have a cookie banner.</p>
+    </div>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">Analytics</h2>
+    <p>We use <strong>Cloudflare Web Analytics</strong>, which is cookieless and does not track individual visitors or set any cookies on your device.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">Spam protection</h2>
+    <p>Our contact form uses <strong>Cloudflare Turnstile</strong>. Turnstile may set a short-lived, strictly-necessary cookie when you submit the form, solely to verify you are not a bot. Under the UK Privacy and Electronic Communications Regulations (PECR), cookies strictly necessary for a service you have requested are exempt from consent. This cookie is not used for tracking and is deleted when you close your browser.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">Third-party embeds</h2>
+    <p>We do not embed YouTube videos, Facebook widgets, Twitter timelines, or other third-party elements that would set their own cookies.</p>
+
+    <h2 class="font-display text-2xl text-navy-900 pt-4">If you still want to block everything</h2>
+    <p>You can disable all cookies in your browser — this site will continue to work normally, including the contact form.</p>
+
+    <p class="text-sm text-slate-500 pt-6">Questions? Email <a href={`mailto:${site.email}`} class="underline">{site.email}</a>.</p>
+  </article>
+</Page>

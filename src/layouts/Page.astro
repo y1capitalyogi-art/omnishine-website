@@ -1,0 +1,26 @@
+---
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyCtaMobile from '../components/StickyCtaMobile.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  schemas?: object[];
+  ogImage?: string;
+  noindex?: boolean;
+  showStickyCta?: boolean;
+}
+
+const { showStickyCta = true, ...rest } = Astro.props;
+---
+<Base {...rest}>
+  <Header />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+  {showStickyCta && <StickyCtaMobile />}
+</Base>
