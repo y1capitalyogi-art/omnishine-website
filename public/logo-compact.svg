@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" role="img" aria-label="Omni Shine">
+  <defs>
+    <linearGradient id="markBgC" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="0.55" stop-color="#172554"/>
+      <stop offset="1" stop-color="#0c1340"/>
+    </linearGradient>
+    <linearGradient id="markSparkleC" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fef3c7"/>
+      <stop offset="0.5" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+    <radialGradient id="markGlowC" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fde68a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shineGradC" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark -->
+  <g>
+    <rect x="8" y="8" width="64" height="64" rx="14" fill="url(#markBgC)"/>
+    <path d="M22 22 Q22 16 28 16 L52 16" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="40" cy="40" r="16" fill="url(#markGlowC)"/>
+    <path d="M40 21 L42.4 37.6 L59 40 L42.4 42.4 L40 59 L37.6 42.4 L21 40 L37.6 37.6 Z"
+          fill="url(#markSparkleC)" stroke="#92400e" stroke-width="0.4" stroke-linejoin="round" stroke-opacity="0.6"/>
+    <path d="M57 26 L57.8 29 L60.8 29.8 L57.8 30.6 L57 33.6 L56.2 30.6 L53.2 29.8 L56.2 29 Z" fill="#fde68a" opacity="0.92"/>
+    <path d="M24 55 L24.6 57 L26.6 57.6 L24.6 58.2 L24 60.2 L23.4 58.2 L21.4 57.6 L23.4 57 Z" fill="#fde68a" opacity="0.75"/>
+  </g>
+
+  <!-- Wordmark, vertically centred to mark -->
+  <g transform="translate(92 0)">
+    <text x="0" y="54" font-family="'Fraunces Variable', Fraunces, Georgia, serif"
+          font-size="42" font-weight="700" fill="#1e3a8a" letter-spacing="-0.8">
+      Omni
+    </text>
+    <text x="140" y="54" font-family="'Fraunces Variable', Fraunces, Georgia, serif"
+          font-size="42" font-weight="700" font-style="italic" fill="url(#shineGradC)" letter-spacing="-0.4">
+      Shine
+    </text>
+    <path d="M264 16 L265 19.5 L268.5 20.5 L265 21.5 L264 25 L263 21.5 L259.5 20.5 L263 19.5 Z"
+          fill="#fbbf24"/>
+  </g>
+</svg>
