@@ -27,10 +27,13 @@ Bank transfer, cash, card, Stripe link. Invoices for commercial clients with 7-d
 - [Domestic cleaning in Oldham](https://omnishine.co.uk/services/domestic-cleaning-oldham/)
 - [Domestic cleaning in Royton](https://omnishine.co.uk/services/domestic-cleaning-royton/)
 - [Commercial cleaning in Oldham](https://omnishine.co.uk/services/commercial-cleaning-oldham/)
+- [Commercial cleaning in Ashton-under-Lyne](https://omnishine.co.uk/services/commercial-cleaning-ashton-under-lyne/)
 - [Deep cleaning in Oldham](https://omnishine.co.uk/services/deep-cleaning-oldham/)
+- [Deep cleaning in Saddleworth](https://omnishine.co.uk/services/deep-cleaning-saddleworth/)
 - [End-of-tenancy cleaning in Oldham](https://omnishine.co.uk/services/end-of-tenancy-cleaning-oldham/)
 - [End-of-tenancy cleaning in Saddleworth](https://omnishine.co.uk/services/end-of-tenancy-cleaning-saddleworth/)
 - [End-of-tenancy cleaning in Rochdale](https://omnishine.co.uk/services/end-of-tenancy-cleaning-rochdale/)
+- [End-of-tenancy cleaning in Middleton](https://omnishine.co.uk/services/end-of-tenancy-cleaning-middleton/)
 - [After-builders cleaning in Oldham](https://omnishine.co.uk/services/after-builders-cleaning-oldham/)
 
 ## Town pages

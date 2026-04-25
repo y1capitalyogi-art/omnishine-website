@@ -1,9 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import Page from '../layouts/Page.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import QuoteForm from '../components/QuoteForm.astro';
 import { site } from '../content/site';
 import { breadcrumbSchema, organizationSchema } from '../lib/schema';
+import livingRoom from '../assets/photos/living-room.jpg';
 
 const schemas = [
   organizationSchema(),
@@ -73,7 +75,17 @@ const schemas = [
     </div>
 
     <h2 class="mt-14 font-display text-2xl text-navy-900">Where we work</h2>
-    <p class="mt-4 text-slate-700">We cover <strong>{site.areas.length} towns</strong> around Oldham and Rochdale: {site.areas.slice(0, -1).join(', ')} and {site.areas.at(-1)}. See <a href="/areas/" class="underline hover:text-navy-900">all areas</a>.</p>
+    <p class="mt-4 text-slate-700">We cover <strong>{site.areas.length} towns</strong> around Oldham, Rochdale and Tameside: {site.areas.slice(0, -1).join(', ')} and {site.areas.at(-1)}. See <a href="/areas/" class="underline hover:text-navy-900">all areas</a>.</p>
+
+    <Image
+      src={livingRoom}
+      alt="Bright, freshly cleaned living room with natural light"
+      widths={[600, 900, 1200]}
+      sizes="(min-width: 768px) 768px, 100vw"
+      quality={78}
+      format="webp"
+      class="mt-10 rounded-2xl shadow-xl ring-1 ring-slate-200 w-full h-auto object-cover"
+    />
 
     <h2 class="mt-14 font-display text-2xl text-navy-900">Being honest about being new</h2>
     <p class="mt-4 text-slate-700">Omni Shine was founded in {site.foundingYear}. That means a few things. It means we have limited reviews so far — but every new client gets our full attention. It also means we are still finalising certain accreditations (insurance paperwork, DBS checks, ICO registration) that older companies take for granted. Ask us about our current position at any point — we will tell you the truth, in writing, before you book.</p>

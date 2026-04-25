@@ -1,0 +1,145 @@
+---
+import { Image } from 'astro:assets';
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import FaqList from '../../components/FaqList.astro';
+import { site } from '../../content/site';
+import { breadcrumbSchema, faqSchema } from '../../lib/schema';
+import kitchen from '../../assets/photos/kitchen.jpg';
+
+const path = '/services/end-of-tenancy-cleaning-middleton/';
+const url = `${site.url}${path}`;
+
+const included = [
+  'Every room cleaned to letting-agent inventory standard',
+  'Full oven, hob, extractor and microwave deep clean',
+  'Inside and outside of all cupboards, drawers and wardrobes',
+  'Bathrooms descaled — tiles, grout, fixtures, screens',
+  'Skirtings, door frames, window sills, light switches',
+  'Fridge and freezer defrosted and wiped (if switched off)',
+  'Carpets vacuumed; hard floors mopped',
+  'Final walk-through and photo confirmation',
+];
+
+const localFaqs = [
+  { q: 'Do you cover all of Middleton borough?',
+    a: 'Yes — Middleton town centre, Alkrington, Rhodes, Boarshaw, Langley, and out to Hopwood and Birch. Just off the M60 means we are typically with you within 24 hours of booking.' },
+  { q: 'Can you turn around a property between same-day check-out and check-in?',
+    a: 'Often yes if you give us at least 4 hours between vacating and the next viewing. Tighter than that we will be honest if it is too tight to do well.' },
+  { q: 'Do you work with Middleton letting agents?',
+    a: 'Yes. We complete cleans to the standard inventory checklist most Middleton agents use. Happy to liaise with the agent or inventory clerk directly on check-out if you give us their contact.' },
+  { q: 'Do you handle student houses near MMU Middleton?',
+    a: 'Yes — multi-bedroom student lets get a fixed price after a quick photo walk-through. We bring extra hands for larger properties.' },
+  { q: 'Do you charge a Middleton travel fee?',
+    a: 'No. Middleton is inside our standard service area. No travel surcharge.' },
+];
+
+const customService = { from: 180 };
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: 'End of Tenancy Cleaning in Middleton',
+    description: 'Deposit-back end-of-tenancy cleans across Middleton from £180 fixed.',
+    provider: { '@id': `${site.url}/#business` },
+    areaServed: ['Middleton', 'Alkrington', 'Rhodes', 'Boarshaw', 'Langley', 'Hopwood'].map(a => ({ '@type': 'Place', name: a })),
+    serviceType: 'End of Tenancy Cleaning',
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'GBP',
+      price: customService.from,
+      availability: 'https://schema.org/InStock',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: customService.from,
+        priceCurrency: 'GBP',
+        description: 'from',
+      },
+    },
+  },
+  breadcrumbSchema([
+    { name: 'Home', url: `${site.url}/` },
+    { name: 'Services', url: `${site.url}/#services` },
+    { name: 'End of Tenancy in Middleton', url },
+  ]),
+  faqSchema(localFaqs),
+];
+---
+<Page
+  title="End of Tenancy Cleaning in Middleton | From £180 | Omni Shine"
+  description="Deposit-back end-of-tenancy cleans in Middleton — Alkrington, Rhodes, Boarshaw, Langley. From £180 fixed, 72-hour re-clean guarantee, fast turnarounds."
+  path={path}
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Services',href:'/#services'},{name:'End of Tenancy in Middleton'}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <header>
+      <span class="inline-flex items-center rounded-full bg-gold-400/20 px-3 py-1 text-xs font-semibold text-navy-900">From £{customService.from} fixed · 72-hour re-clean</span>
+      <h1 class="mt-4 font-display text-4xl md:text-5xl text-navy-900 tracking-tight">End of Tenancy Cleaning in Middleton</h1>
+      <p class="mt-5 text-lg text-slate-700 leading-relaxed">
+        Inventory-standard end-of-tenancy cleans across <strong>Middleton, Alkrington, Rhodes, Boarshaw</strong> and <strong>Langley</strong>. Fixed quotes from <strong>£{customService.from}</strong>, with the same 72-hour re-clean guarantee that covers our Oldham and Rochdale work.
+      </p>
+      <Image
+        src={kitchen}
+        alt="Cleaned rental property kitchen ready for the inventory clerk in Middleton"
+        widths={[600, 900, 1200, 1600]}
+        sizes="(min-width: 768px) 768px, 100vw"
+        quality={78}
+        format="webp"
+        loading="eager"
+        fetchpriority="high"
+        class="mt-8 rounded-2xl shadow-xl ring-1 ring-slate-200 w-full h-auto object-cover aspect-[16/9]"
+      />
+    </header>
+
+    <div class="mt-10 rounded-2xl bg-slate-50 border border-slate-200 p-6 md:p-8">
+      <h2 class="font-display text-xl text-navy-900">The full Middleton end-of-tenancy spec</h2>
+      <ul class="mt-4 grid gap-3 text-slate-700 md:grid-cols-2">
+        {included.map(i => (
+          <li class="flex items-start gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-gold-500 mt-0.5 shrink-0" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{i}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Built for the Middleton rental market</h2>
+    <p class="mt-4 text-slate-700">Middleton has a substantial mix of housing — terraced family lets in Rhodes and Boarshaw, modern apartments near the Arndale, and a growing student rental market. We're set up for the volume: same-week starts, multi-cleaner teams for bigger properties, and tight communication with letting agents and inventory clerks.</p>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Pricing for Middleton properties</h2>
+    <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-slate-50 text-slate-600"><tr><th class="p-3">Property</th><th class="p-3">From</th></tr></thead>
+        <tbody class="text-slate-800">
+          <tr class="border-t border-slate-200"><td class="p-3">Studio / 1-bed flat</td><td class="p-3">£180</td></tr>
+          <tr class="border-t border-slate-200"><td class="p-3">2-bed flat / terraced house</td><td class="p-3">£240</td></tr>
+          <tr class="border-t border-slate-200"><td class="p-3">3-bed house / HMO</td><td class="p-3">£320</td></tr>
+          <tr class="border-t border-slate-200"><td class="p-3">4+ bed HMO / family house</td><td class="p-3">On quote</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions</h2>
+    <div class="mt-4"><FaqList items={localFaqs} /></div>
+
+    <div class="mt-12 rounded-xl border border-gold-400/40 bg-gold-400/10 p-5">
+      <h3 class="font-semibold text-navy-900">Other Middleton-relevant pages</h3>
+      <ul class="mt-3 space-y-1.5 text-sm text-slate-700">
+        <li>✦ <a href="/areas/middleton/" class="font-semibold underline hover:text-navy-900">Middleton area page</a> — domestic, deep, commercial</li>
+        <li>✦ <a href="/services/end-of-tenancy-cleaning-rochdale/" class="font-semibold underline hover:text-navy-900">End of tenancy in Rochdale</a> — neighbouring borough</li>
+        <li>✦ <a href="/services/end-of-tenancy-cleaning-oldham/" class="font-semibold underline hover:text-navy-900">End of tenancy in Oldham</a> — same service, broader area</li>
+      </ul>
+    </div>
+
+    <div id="quote" class="mt-12 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
+      <h2 class="font-display text-2xl text-navy-900">Book your Middleton end-of-tenancy clean</h2>
+      <p class="mt-2 text-slate-600">Tell us check-out date, bedrooms and postcode — we'll fix the price today.</p>
+      <div class="mt-6"><QuoteForm /></div>
+    </div>
+  </article>
+</Page>

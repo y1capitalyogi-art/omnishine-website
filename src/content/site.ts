@@ -85,7 +85,10 @@ export const site = {
   serviceAreaCombos: [
     { slug: 'end-of-tenancy-cleaning-saddleworth', label: 'End of tenancy in Saddleworth' },
     { slug: 'end-of-tenancy-cleaning-rochdale', label: 'End of tenancy in Rochdale' },
+    { slug: 'end-of-tenancy-cleaning-middleton', label: 'End of tenancy in Middleton' },
     { slug: 'domestic-cleaning-royton', label: 'Domestic cleaning in Royton' },
+    { slug: 'deep-cleaning-saddleworth', label: 'Deep cleaning in Saddleworth' },
+    { slug: 'commercial-cleaning-ashton-under-lyne', label: 'Commercial cleaning in Ashton-under-Lyne' },
   ] as const,
   // Cloudflare Turnstile public sitekey (safe to commit — public by design).
   // The matching secret lives in Cloudflare Pages env vars only.

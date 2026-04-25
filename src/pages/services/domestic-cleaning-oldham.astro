@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
@@ -6,6 +7,7 @@ import FaqList from '../../components/FaqList.astro';
 import AreaCard from '../../components/AreaCard.astro';
 import { site } from '../../content/site';
 import { serviceSchema, breadcrumbSchema, faqSchema } from '../../lib/schema';
+import livingRoom from '../../assets/photos/living-room.jpg';
 
 const s = site.services.find(x => x.slug === 'domestic-cleaning-oldham')!;
 const path = `/services/${s.slug}/`;
@@ -51,8 +53,19 @@ const schemas = [
       <span class="inline-flex items-center rounded-full bg-gold-400/20 px-3 py-1 text-xs font-semibold text-navy-900">From £{s.from}{s.unit}</span>
       <h1 class="mt-4 font-display text-4xl md:text-5xl text-navy-900 tracking-tight">Domestic Cleaning in Oldham</h1>
       <p class="mt-5 text-lg text-slate-700 leading-relaxed">
-        Reliable, friendly home cleaning across Oldham and 13 surrounding towns — from <strong>£{s.from} per hour</strong>, two-hour minimum. Eco-friendly products, weekend slots, and the same cleaner each visit wherever possible.
+        Reliable, friendly home cleaning across Oldham and 16 surrounding towns — from <strong>£{s.from} per hour</strong>, two-hour minimum. Eco-friendly products, weekend slots, and the same cleaner each visit wherever possible.
       </p>
+      <Image
+        src={livingRoom}
+        alt="Bright, freshly cleaned modern living room ready for the family"
+        widths={[600, 900, 1200, 1600]}
+        sizes="(min-width: 768px) 768px, 100vw"
+        quality={78}
+        format="webp"
+        loading="eager"
+        fetchpriority="high"
+        class="mt-8 rounded-2xl shadow-xl ring-1 ring-slate-200 w-full h-auto object-cover aspect-[16/9]"
+      />
     </header>
 
     <div class="mt-10 rounded-2xl bg-slate-50 border border-slate-200 p-6 md:p-8">

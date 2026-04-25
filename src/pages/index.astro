@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Page from '../layouts/Page.astro';
 import Hero from '../components/Hero.astro';
 import TrustStrip from '../components/TrustStrip.astro';
@@ -16,6 +17,8 @@ import {
   websiteSchema,
   faqSchema,
 } from '../lib/schema';
+import cleaningSupplies from '../assets/photos/cleaning-supplies.jpg';
+import stoneCottage from '../assets/photos/stone-cottage.jpg';
 
 const topFaqs = faqs.slice(0, 6);
 const reviews = approvedReviews();
@@ -89,11 +92,22 @@ const whyIcons: Record<string, string> = {
   </section>
 
   <!-- Areas -->
-  <section class="bg-slate-50 py-20 border-y border-slate-200">
+  <section class="relative isolate overflow-hidden py-20 border-y border-slate-200">
+    <Image
+      src={stoneCottage}
+      alt=""
+      widths={[640, 960, 1280, 1920]}
+      sizes="100vw"
+      quality={70}
+      format="webp"
+      loading="lazy"
+      class="absolute inset-0 -z-20 h-full w-full object-cover opacity-15"
+    />
+    <div class="absolute inset-0 -z-10 bg-slate-50/80"></div>
     <div class="mx-auto max-w-6xl px-4">
       <div class="text-center max-w-2xl mx-auto">
         <p class="text-xs font-semibold tracking-widest uppercase text-gold-600">Coverage</p>
-        <h2 class="mt-3 font-display text-3xl md:text-4xl text-navy-900">{site.areas.length} towns across Oldham &amp; Rochdale</h2>
+        <h2 class="mt-3 font-display text-3xl md:text-4xl text-navy-900">{site.areas.length} towns across Oldham, Rochdale &amp; Tameside</h2>
         <p class="mt-4 text-slate-600">Click your area for local detail — or skip ahead and get a quote.</p>
       </div>
 
@@ -117,14 +131,35 @@ const whyIcons: Record<string, string> = {
   </section>
 
   <!-- Why -->
-  <section class="mx-auto max-w-6xl px-4 py-20">
-    <div class="text-center max-w-2xl mx-auto">
-      <p class="text-xs font-semibold tracking-widest uppercase text-gold-600">Why Omni Shine</p>
-      <h2 class="mt-3 font-display text-3xl md:text-4xl text-navy-900">What makes us different</h2>
-      <p class="mt-4 text-slate-600">We're new, but we're local, and we care about doing the basics brilliantly.</p>
+  <section class="relative mx-auto max-w-6xl px-4 py-20">
+    <div class="grid gap-12 md:grid-cols-[1fr_1fr] items-center">
+      <div>
+        <p class="text-xs font-semibold tracking-widest uppercase text-gold-600">Why Omni Shine</p>
+        <h2 class="mt-3 font-display text-3xl md:text-4xl text-navy-900">Eco-friendly, family-run, properly local</h2>
+        <p class="mt-4 text-slate-600">We're new, but we're from here, and we care about doing the basics brilliantly. Every visit uses plant-based products, every recurring client gets the same cleaner, and every quote is honest about what's possible.</p>
+        <div class="mt-6 flex flex-wrap gap-3 text-sm">
+          <a href="/about/" class="inline-flex items-center gap-1 rounded-md border border-navy-900 px-4 py-2 font-medium text-navy-900 hover:bg-navy-900 hover:text-white transition">Meet the founder →</a>
+          <a href="/pricing/" class="inline-flex items-center gap-1 rounded-md bg-navy-900 px-4 py-2 font-medium text-white hover:bg-navy-700 transition">See pricing →</a>
+        </div>
+      </div>
+      <div class="relative">
+        <Image
+          src={cleaningSupplies}
+          alt="Eco-friendly cleaning supplies neatly arranged on a kitchen counter"
+          widths={[400, 600, 800]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          quality={80}
+          format="webp"
+          class="rounded-2xl shadow-xl ring-1 ring-slate-200 object-cover w-full h-[360px] md:h-[440px]"
+        />
+        <div class="absolute -bottom-4 -left-4 hidden md:block rounded-xl bg-white shadow-lg p-4 max-w-[200px] ring-1 ring-slate-200">
+          <p class="text-xs font-semibold tracking-wide uppercase text-gold-600">Eco-first</p>
+          <p class="mt-1 text-sm font-display text-navy-900">Plant-based products as standard</p>
+        </div>
+      </div>
     </div>
 
-    <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
       {why.map(w => (
         <div class="relative">
           <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-navy-900 text-gold-400">
