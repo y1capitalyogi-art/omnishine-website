@@ -1,0 +1,137 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import FaqList from '../../components/FaqList.astro';
+import { site } from '../../content/site';
+import { breadcrumbSchema, faqSchema } from '../../lib/schema';
+
+const path = '/services/end-of-tenancy-cleaning-saddleworth/';
+const url = `${site.url}${path}`;
+
+const included = [
+  'Stone-cottage friendly — pH-neutral on flagstones and Yorkshire stone',
+  'Every room cleaned to letting-agent inventory standard',
+  'Full oven, hob, extractor and microwave deep clean',
+  'Inside and outside of all cupboards, drawers and wardrobes',
+  'Bathrooms descaled — tiles, grout, fixtures, screens',
+  'Skirtings, door frames, window sills, light switches',
+  'Interior windows, mirrors and glass',
+  'Carpets vacuumed; flagstone and tile floors mopped',
+  'Photo confirmation when complete',
+];
+
+const localFaqs = [
+  { q: 'Do you handle the Saddleworth holiday-let market?',
+    a: 'Yes — same-day turnovers between guests are a regular part of our work in Uppermill, Greenfield, Delph and Dobcross. Fresh linen on request, restocking of basics, photo confirmation when ready for the next guest.' },
+  { q: 'Will you clean stone-cottage floors safely?',
+    a: 'We use pH-neutral cleaners and soft microfibre on flagstones and sandblasted stone. We never use abrasive pads or acidic descalers on stone. If your property has unusual surfaces, mention it on the form and we will plan the products in advance.' },
+  { q: 'Can you meet the inventory clerk?',
+    a: 'Yes. If your check-out clerk is happy to walk through with us at the end, we can hand the keys over directly and answer any questions on-site. Useful for getting the inventory signed off quickly.' },
+  { q: 'How fast can you turn around a property?',
+    a: 'For a 1-bed cottage, 4–6 hours with two cleaners. For a 3-bed family home, a full day. We can usually start within 24–48 hours of your booking — weekend slots fill earliest, so book in as soon as you have a check-out date.' },
+];
+
+const customService = {
+  slug: 'end-of-tenancy-cleaning-saddleworth',
+  name: 'End of Tenancy Cleaning in Saddleworth',
+  short: 'EOT Saddleworth',
+  from: 180,
+  unit: 'from',
+  icon: 'key',
+  blurb: 'Deposit-back end-of-tenancy cleans across the Saddleworth villages — Uppermill, Greenfield, Delph, Dobcross, Diggle.',
+} as const;
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: customService.name,
+    description: customService.blurb,
+    provider: { '@id': `${site.url}/#business` },
+    areaServed: ['Uppermill', 'Greenfield', 'Delph', 'Dobcross', 'Diggle', 'Saddleworth', 'Grotton', 'Springhead'].map(a => ({ '@type': 'Place', name: a })),
+    serviceType: 'End of Tenancy Cleaning',
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'GBP',
+      price: customService.from,
+      availability: 'https://schema.org/InStock',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: customService.from,
+        priceCurrency: 'GBP',
+        description: customService.unit,
+      },
+    },
+  },
+  breadcrumbSchema([
+    { name: 'Home', url: `${site.url}/` },
+    { name: 'Services', url: `${site.url}/#services` },
+    { name: customService.name, url },
+  ]),
+  faqSchema(localFaqs),
+];
+---
+<Page
+  title="End of Tenancy Cleaning in Saddleworth | From £180 | Omni Shine"
+  description="End-of-tenancy cleaners across Saddleworth — Uppermill, Greenfield, Delph, Dobcross, Diggle. From £180, 72-hour re-clean guarantee, holiday-let turnovers."
+  path={path}
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Services',href:'/#services'},{name:'End of Tenancy in Saddleworth'}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <header>
+      <span class="inline-flex items-center rounded-full bg-gold-400/20 px-3 py-1 text-xs font-semibold text-navy-900">From £{customService.from} fixed · 72-hour re-clean</span>
+      <h1 class="mt-4 font-display text-4xl md:text-5xl text-navy-900 tracking-tight">End of Tenancy Cleaning in Saddleworth</h1>
+      <p class="mt-5 text-lg text-slate-700 leading-relaxed">
+        Inventory-standard end-of-tenancy cleans across the Saddleworth villages — <strong>Uppermill, Greenfield, Delph, Dobcross, Diggle, Grotton</strong> and <strong>Springhead</strong>. Fixed quotes from <strong>£{customService.from}</strong>, with the same 72-hour re-clean guarantee that covers our Oldham work.
+      </p>
+    </header>
+
+    <div class="mt-10 rounded-2xl bg-slate-50 border border-slate-200 p-6 md:p-8">
+      <h2 class="font-display text-xl text-navy-900">The full Saddleworth end-of-tenancy spec</h2>
+      <ul class="mt-4 grid gap-3 text-slate-700 md:grid-cols-2">
+        {included.map(i => (
+          <li class="flex items-start gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-gold-500 mt-0.5 shrink-0" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{i}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Two distinct kinds of work</h2>
+    <p class="mt-4 text-slate-700">Saddleworth has both a long-let rental market and a thriving holiday-let scene. We handle both, with the same fixed-price discipline:</p>
+    <ul class="mt-4 space-y-3 text-slate-700">
+      <li><strong>End-of-tenancy for long lets</strong> — full inventory-standard clean, oven and white goods inside and out, free 72-hour re-clean if your letting agent flags anything.</li>
+      <li><strong>Holiday-let exit cleans / changeovers</strong> — same-day turnover, fresh linen on request, restock basics, photo-confirmation when guest-ready. Especially common around Uppermill and Greenfield.</li>
+    </ul>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Period properties get a careful hand</h2>
+    <p class="mt-4 text-slate-700">Most Saddleworth rentals have stone or flagstone floors, exposed beams, and original Yorkshire-stone fireplaces. We use pH-neutral cleaners on stone (never abrasive scrubs or acidic descalers), test products in an inconspicuous spot first, and flag anything that looks pre-damaged before we start.</p>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Saddleworth pricing</h2>
+    <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-slate-50 text-slate-600"><tr><th class="p-3">Property</th><th class="p-3">From</th></tr></thead>
+        <tbody class="text-slate-800">
+          <tr class="border-t border-slate-200"><td class="p-3">Studio / 1-bed cottage</td><td class="p-3">£180</td></tr>
+          <tr class="border-t border-slate-200"><td class="p-3">2-bed cottage or apartment</td><td class="p-3">£240</td></tr>
+          <tr class="border-t border-slate-200"><td class="p-3">3-bed house or barn conversion</td><td class="p-3">£320</td></tr>
+          <tr class="border-t border-slate-200"><td class="p-3">4+ bed</td><td class="p-3">On quote</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions about end-of-tenancy in Saddleworth</h2>
+    <div class="mt-4"><FaqList items={localFaqs} /></div>
+
+    <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
+      <h2 class="font-display text-2xl text-navy-900">Book your Saddleworth end-of-tenancy clean</h2>
+      <p class="mt-2 text-slate-600">Postcode + bedroom count is enough — we'll fix the quote today.</p>
+      <div class="mt-6"><QuoteForm /></div>
+    </div>
+  </article>
+</Page>

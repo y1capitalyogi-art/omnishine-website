@@ -1,0 +1,118 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import FaqList from '../../components/FaqList.astro';
+import { site } from '../../content/site';
+import { breadcrumbSchema, faqSchema } from '../../lib/schema';
+
+const path = '/services/domestic-cleaning-royton/';
+const url = `${site.url}${path}`;
+
+const included = [
+  'Dusting, vacuuming and mopping throughout',
+  'Kitchen surfaces, hob, sink and splashback',
+  'Bathroom clean and sanitise',
+  'Bed-changing if fresh sheets are out',
+  'Bins emptied and end-of-visit tidy',
+  'Eco-friendly products and equipment included',
+];
+
+const localFaqs = [
+  { q: 'Which days do you cover Royton?',
+    a: 'We batch Royton with Shaw and Heyside on the same evenings — typically Tuesdays and Thursdays for weekly clients, alternate weeks for fortnightly. Saturday morning slots are popular and tend to fill first.' },
+  { q: 'How quickly can you start?',
+    a: 'Same-week starts are normal. We do an initial visit (2-hour minimum), and if you want to lock in a recurring slot we agree the day at the end of that first clean.' },
+  { q: 'Can I leave a key?',
+    a: 'Yes. Most Royton recurring clients give us a key or share a key-safe code. Keys are stored securely with no address attached and returned within 7 days on request.' },
+  { q: 'Will the same cleaner come every time?',
+    a: 'Yes, wherever possible. Continuity matters for trust and so we learn your routines. If your usual cleaner is away we will tell you in advance and offer a swap or skip.' },
+];
+
+const customService = { from: 18, unit: '/ hour' };
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: 'Domestic Cleaning in Royton',
+    description: 'Weekly, fortnightly and one-off domestic cleaning in Royton, Heyside and Thornham from £18 per hour.',
+    provider: { '@id': `${site.url}/#business` },
+    areaServed: ['Royton', 'Heyside', 'Thornham', 'Shaw', 'Chadderton'].map(a => ({ '@type': 'Place', name: a })),
+    serviceType: 'Domestic Cleaning',
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'GBP',
+      price: customService.from,
+      availability: 'https://schema.org/InStock',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: customService.from,
+        priceCurrency: 'GBP',
+        description: customService.unit,
+      },
+    },
+  },
+  breadcrumbSchema([
+    { name: 'Home', url: `${site.url}/` },
+    { name: 'Services', url: `${site.url}/#services` },
+    { name: 'Domestic Cleaning in Royton', url },
+  ]),
+  faqSchema(localFaqs),
+];
+---
+<Page
+  title="Domestic Cleaning in Royton | From £18/hr | Omni Shine"
+  description="Weekly and fortnightly domestic cleaning in Royton, Heyside and Thornham from £18/hr. Same cleaner each visit, eco-friendly products, weekend slots."
+  path={path}
+  schemas={schemas}
+>
+  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Services',href:'/#services'},{name:'Domestic Cleaning in Royton'}]} />
+
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <header>
+      <span class="inline-flex items-center rounded-full bg-gold-400/20 px-3 py-1 text-xs font-semibold text-navy-900">From £{customService.from}{customService.unit} · two-hour minimum</span>
+      <h1 class="mt-4 font-display text-4xl md:text-5xl text-navy-900 tracking-tight">Domestic Cleaning in Royton</h1>
+      <p class="mt-5 text-lg text-slate-700 leading-relaxed">
+        Weekly and fortnightly home cleaning across <strong>Royton, Heyside and Thornham</strong> — from <strong>£{customService.from} per hour</strong>, two-hour minimum. We bring eco-friendly products and all equipment, send the same cleaner each visit wherever possible, and never charge a weekend uplift.
+      </p>
+    </header>
+
+    <div class="mt-10 rounded-2xl bg-slate-50 border border-slate-200 p-6 md:p-8">
+      <h2 class="font-display text-xl text-navy-900">What's included as standard</h2>
+      <ul class="mt-4 grid gap-3 text-slate-700 md:grid-cols-2">
+        {included.map(i => (
+          <li class="flex items-start gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-gold-500 mt-0.5 shrink-0" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{i}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Built for working families in Royton</h2>
+    <p class="mt-4 text-slate-700">Most of our Royton domestic clients are working households who want one reliable thing they don't have to think about. We turn up on the day we say, with the same cleaner each time wherever possible, and leave the house ready for the weekend. If we're ever going to be late, we tell you — no silent no-shows.</p>
+
+    <h2 class="mt-10 font-display text-2xl text-navy-900">Other Royton services</h2>
+    <p class="mt-4 text-slate-700">Beyond regular domestic, we also handle:</p>
+    <ul class="mt-3 space-y-2 text-slate-700">
+      <li>✦ <a href="/services/deep-cleaning-oldham/" class="underline hover:text-navy-900">Deep cleans</a> — top-to-bottom, fixed price, ideal for spring or pre-sale</li>
+      <li>✦ <a href="/services/end-of-tenancy-cleaning-oldham/" class="underline hover:text-navy-900">End-of-tenancy cleans</a> for Royton landlords and tenants</li>
+      <li>✦ <a href="/services/commercial-cleaning-oldham/" class="underline hover:text-navy-900">Commercial cleaning</a> for offices, retail and salons in Royton</li>
+      <li>✦ <a href="/services/after-builders-cleaning-oldham/" class="underline hover:text-navy-900">After-builders cleans</a> for renovations</li>
+    </ul>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions about domestic cleaning in Royton</h2>
+    <div class="mt-4"><FaqList items={localFaqs} /></div>
+
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Cleaners across the wider area</h2>
+    <p class="mt-4 text-slate-700">Beyond Royton itself we cover <a href="/areas/shaw/" class="underline hover:text-navy-900">Shaw</a>, <a href="/areas/chadderton/" class="underline hover:text-navy-900">Chadderton</a>, <a href="/areas/failsworth/" class="underline hover:text-navy-900">Failsworth</a>, <a href="/areas/moorside/" class="underline hover:text-navy-900">Moorside</a> and 10+ other towns — <a href="/areas/" class="underline hover:text-navy-900">see all areas</a>.</p>
+
+    <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
+      <h2 class="font-display text-2xl text-navy-900">Get your Royton domestic cleaning quote</h2>
+      <p class="mt-2 text-slate-600">Postcode + how often + property size — that's all we need.</p>
+      <div class="mt-6"><QuoteForm /></div>
+    </div>
+  </article>
+</Page>

@@ -3,7 +3,7 @@ export const site = {
   shortName: 'OmniShine',
   tagline: 'Professional cleaning you can count on',
   heroHeadline: 'Professional Cleaning Services in Oldham',
-  heroSub: 'Family-run cleaners serving Oldham, Shaw, Royton, Saddleworth, Rochdale and 10+ surrounding towns. Eco-friendly products, weekend availability, free quotes — no obligation.',
+  heroSub: 'Family-run cleaners serving Oldham, Saddleworth, Rochdale, Middleton, Ashton-under-Lyne and 12 more surrounding towns. Eco-friendly products, weekend availability, free quotes — no obligation.',
   url: 'https://omnishine.co.uk',
   email: 'info@omnishine.co.uk',
   ownerEmail: 'sangitachavda11@gmail.com',
@@ -22,6 +22,7 @@ export const site = {
   areas: [
     'Oldham', 'Shaw', 'Royton', 'Chadderton', 'Failsworth', 'Lees', 'Uppermill',
     'Saddleworth', 'Springhead', 'Greenfield', 'Grotton', 'Moorside', 'Rochdale', 'Delph',
+    'Middleton', 'Ashton-under-Lyne', 'Mossley',
   ] as const,
   services: [
     {
@@ -73,8 +74,19 @@ export const site = {
   trustChips: ['Family-run', 'Oldham-based', 'Eco-friendly', 'Weekends included'] as const,
   paymentsAccepted: ['Bank transfer', 'Cash', 'Card', 'Stripe link'] as const,
   googleBusinessUrl: 'https://www.google.com/maps/place/Omni+Shine+Cleaning/data=!4m2!3m1!1s0x0:0x8b0c17c468c5a93c',
-  // Primary areas that get dedicated pages (others fall back to the hub)
-  areaPages: ['Shaw', 'Royton', 'Chadderton', 'Saddleworth', 'Rochdale'] as const,
+  // Areas that get dedicated pages (slug = lowercase with hyphens). Stays in sync with src/pages/areas/*.
+  areaPages: [
+    'Shaw', 'Royton', 'Chadderton', 'Saddleworth', 'Rochdale',
+    'Failsworth', 'Lees', 'Uppermill', 'Springhead',
+    'Greenfield', 'Grotton', 'Moorside', 'Delph',
+    'Middleton', 'Ashton-under-Lyne', 'Mossley',
+  ] as const,
+  // Service × area combo pages — full slug under /services/
+  serviceAreaCombos: [
+    { slug: 'end-of-tenancy-cleaning-saddleworth', label: 'End of tenancy in Saddleworth' },
+    { slug: 'end-of-tenancy-cleaning-rochdale', label: 'End of tenancy in Rochdale' },
+    { slug: 'domestic-cleaning-royton', label: 'Domestic cleaning in Royton' },
+  ] as const,
   // Cloudflare Turnstile public sitekey (safe to commit — public by design).
   // The matching secret lives in Cloudflare Pages env vars only.
   turnstileSitekey: '0x4AAAAAADDBzalRSeJq3Wu9',

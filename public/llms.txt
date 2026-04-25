@@ -1,6 +1,6 @@
 # Omni Shine Cleaning
 
-> Family-run professional cleaning service based in Oldham, Greater Manchester. Founded in 2026 by Sangita Chavda. Serves 14 towns around Oldham. Contact form only — no phone. Email: info@omnishine.co.uk.
+> Family-run professional cleaning service based in Oldham, Greater Manchester. Founded in 2026 by Sangita Chavda. Serves 17 towns across Oldham, Rochdale and Tameside boroughs. Contact form only — no phone. Email: info@omnishine.co.uk.
 
 ## About
 - Business name: Omni Shine Cleaning
@@ -11,17 +11,45 @@
 - Opening hours: Mon–Fri 5pm–9pm, Sat–Sun 8am–9pm
 
 ## Services and starting prices
-- Domestic cleaning — from £18 / hour (two-hour minimum)
-- Commercial cleaning — from £22 / hour
-- Deep cleaning — from £150 (one-off, fixed)
-- End-of-tenancy cleaning — from £180 (fixed, with 72-hour re-clean guarantee)
-- After-builders cleaning — from £200 (fixed)
+- Domestic cleaning: from £18/hr (two-hour minimum)
+- Commercial cleaning: from £22/hr
+- Deep cleaning: from £150 fixed
+- End of tenancy cleaning: from £180 fixed
+- After-builders cleaning: from £200 fixed
 
-## Areas served
-Oldham, Shaw, Royton, Chadderton, Failsworth, Lees, Uppermill, Saddleworth, Springhead, Greenfield, Grotton, Moorside, Rochdale, Delph.
+## Areas served (17 towns)
+Oldham, Shaw, Royton, Chadderton, Failsworth, Lees, Uppermill, Saddleworth, Springhead, Greenfield, Grotton, Moorside, Rochdale, Delph, Middleton, Ashton-under-Lyne, Mossley.
 
 ## Payment
 Bank transfer, cash, card, Stripe link. Invoices for commercial clients with 7-day terms.
+
+## Service-specific city pages
+- [Domestic cleaning in Oldham](https://omnishine.co.uk/services/domestic-cleaning-oldham/)
+- [Domestic cleaning in Royton](https://omnishine.co.uk/services/domestic-cleaning-royton/)
+- [Commercial cleaning in Oldham](https://omnishine.co.uk/services/commercial-cleaning-oldham/)
+- [Deep cleaning in Oldham](https://omnishine.co.uk/services/deep-cleaning-oldham/)
+- [End-of-tenancy cleaning in Oldham](https://omnishine.co.uk/services/end-of-tenancy-cleaning-oldham/)
+- [End-of-tenancy cleaning in Saddleworth](https://omnishine.co.uk/services/end-of-tenancy-cleaning-saddleworth/)
+- [End-of-tenancy cleaning in Rochdale](https://omnishine.co.uk/services/end-of-tenancy-cleaning-rochdale/)
+- [After-builders cleaning in Oldham](https://omnishine.co.uk/services/after-builders-cleaning-oldham/)
+
+## Town pages
+- [Cleaners in Shaw](https://omnishine.co.uk/areas/shaw/)
+- [Cleaners in Royton](https://omnishine.co.uk/areas/royton/)
+- [Cleaners in Chadderton](https://omnishine.co.uk/areas/chadderton/)
+- [Cleaners in Saddleworth](https://omnishine.co.uk/areas/saddleworth/)
+- [Cleaners in Rochdale](https://omnishine.co.uk/areas/rochdale/)
+- [Cleaners in Failsworth](https://omnishine.co.uk/areas/failsworth/)
+- [Cleaners in Lees](https://omnishine.co.uk/areas/lees/)
+- [Cleaners in Uppermill](https://omnishine.co.uk/areas/uppermill/)
+- [Cleaners in Springhead](https://omnishine.co.uk/areas/springhead/)
+- [Cleaners in Greenfield](https://omnishine.co.uk/areas/greenfield/)
+- [Cleaners in Grotton](https://omnishine.co.uk/areas/grotton/)
+- [Cleaners in Moorside](https://omnishine.co.uk/areas/moorside/)
+- [Cleaners in Delph](https://omnishine.co.uk/areas/delph/)
+- [Cleaners in Middleton](https://omnishine.co.uk/areas/middleton/)
+- [Cleaners in Ashton-under-Lyne](https://omnishine.co.uk/areas/ashton-under-lyne/)
+- [Cleaners in Mossley](https://omnishine.co.uk/areas/mossley/)
 
 ## Key pages
 - [Home](https://omnishine.co.uk/)
@@ -31,15 +59,9 @@ Bank transfer, cash, card, Stripe link. Invoices for commercial clients with 7-d
 - [Areas we cover](https://omnishine.co.uk/areas/)
 - [About](https://omnishine.co.uk/about/)
 
-## Services (detail pages)
-- [Domestic cleaning in Oldham](https://omnishine.co.uk/services/domestic-cleaning-oldham/)
-- [Commercial cleaning in Oldham](https://omnishine.co.uk/services/commercial-cleaning-oldham/)
-- [Deep cleaning in Oldham](https://omnishine.co.uk/services/deep-cleaning-oldham/)
-- [End-of-tenancy cleaning in Oldham](https://omnishine.co.uk/services/end-of-tenancy-cleaning-oldham/)
-- [After-builders cleaning in Oldham](https://omnishine.co.uk/services/after-builders-cleaning-oldham/)
-
 ## Guarantees
 - 72-hour re-clean guarantee on any missed areas
 - Eco-friendly products included, fragrance-free on request
 - Same cleaner each visit wherever possible
 - No weekend surcharge
+- No travel charge inside the 17-town service area

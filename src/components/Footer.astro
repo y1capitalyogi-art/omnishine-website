@@ -30,10 +30,16 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div>
-      <h2 class="text-sm font-semibold tracking-wide uppercase text-white/90">Areas</h2>
+      <h2 class="text-sm font-semibold tracking-wide uppercase text-white/90">Popular areas</h2>
       <ul class="mt-4 space-y-2 text-sm text-slate-300">
-        <li><a href="/areas/" class="hover:text-white font-medium">All 14 areas</a></li>
-        {site.areaPages.map(a => (
+        <li><a href="/areas/" class="hover:text-white font-medium">All {site.areas.length} areas</a></li>
+        {site.areaPages.slice(0, 8).map(a => (
+          <li><a href={`/areas/${a.toLowerCase()}/`} class="hover:text-white">Cleaners in {a}</a></li>
+        ))}
+      </ul>
+      <h2 class="mt-6 text-sm font-semibold tracking-wide uppercase text-white/90">Saddleworth &amp; further out</h2>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        {site.areaPages.slice(8).map(a => (
           <li><a href={`/areas/${a.toLowerCase()}/`} class="hover:text-white">Cleaners in {a}</a></li>
         ))}
       </ul>

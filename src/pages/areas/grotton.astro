@@ -5,7 +5,7 @@ import QuoteForm from '../../components/QuoteForm.astro';
 import { site } from '../../content/site';
 import { breadcrumbSchema } from '../../lib/schema';
 
-const area = 'Chadderton';
+const area = 'Grotton';
 const slug = area.toLowerCase();
 const path = `/areas/${slug}/`;
 const url = `${site.url}${path}`;
@@ -16,8 +16,8 @@ const schemas = [breadcrumbSchema([
 ])];
 ---
 <Page
-  title={`Cleaners in Chadderton, Oldham | From £18/hr | Omni Shine`}
-  description={`Home, office and end-of-tenancy cleaning in Chadderton, Hollinwood and Broadway. Family-run, eco-friendly, free quotes.`}
+  title={`Cleaners in Grotton, Oldham | From £18/hr | Omni Shine`}
+  description={`Quiet, reliable home cleaning in Grotton — domestic, deep and end-of-tenancy from £18/hr. Same cleaner each visit, eco-friendly products.`}
   path={path}
   schemas={schemas}
 >
@@ -26,7 +26,7 @@ const schemas = [breadcrumbSchema([
   <section class="mx-auto max-w-3xl px-4 py-12">
     <h1 class="font-display text-4xl md:text-5xl text-navy-900">Cleaners in {area}</h1>
     <p class="mt-5 text-lg text-slate-700 leading-relaxed">
-      We clean homes, offices and rentals across <strong>Chadderton, Hollinwood, Broadway and Mills Hill</strong> — a quick run off the A627(M) from our base. Whether it's a weekly top-over, a post-tenant turnover, or a deep refresh before you sell, we turn up on time and do it properly.
+      <strong>Grotton</strong> is a small, quiet residential village tucked between Lees and Springhead — the kind of place where most clients want one reliable cleaner who shows up every fortnight without drama. We handle Grotton on the same evenings we cover Lees and Springhead, so we can usually offer same-week starts.
     </p>
 
     <h2 class="mt-12 font-display text-2xl text-navy-900">Services available in {area}</h2>
@@ -40,11 +40,14 @@ const schemas = [breadcrumbSchema([
       ))}
     </ul>
 
-    <h2 class="mt-12 font-display text-2xl text-navy-900">Chadderton landlords and letting agents</h2>
-    <p class="mt-4 text-slate-700">We run a lot of end-of-tenancy work along the Chadderton–Failsworth corridor. Fixed prices, detailed inventory-standard checklists, and a free 72-hour re-clean if your check-out inventory clerk flags anything.</p>
+    <h2 class="mt-12 font-display text-2xl text-navy-900">Small village, careful service</h2>
+    <p class="mt-4 text-slate-700">In a village this size, word travels fast — both the good and the bad. We treat every Grotton booking as a long-term reputation play. Same cleaner every visit, no last-minute substitutions, and a quick follow-up text after the first clean to check we've got everything right.</p>
+
+    <h2 class="mt-10 font-display text-2xl text-navy-900">Pricing held simple</h2>
+    <p class="mt-4 text-slate-700">£18/hr for domestic, two-hour minimum, no travel surcharge for Grotton, no weekend uplift. Fixed quotes for one-off deep and end-of-tenancy work — see the <a href="/pricing/" class="underline">pricing page</a> for full details.</p>
 
     <h2 class="mt-12 font-display text-2xl text-navy-900">Nearby areas we also cover</h2>
-    <p class="mt-2 text-slate-700"><a href="/areas/failsworth/" class="underline hover:text-navy-900">Failsworth</a>, <a href="/areas/royton/" class="underline hover:text-navy-900">Royton</a>, <a href="/areas/moorside/" class="underline hover:text-navy-900">Moorside</a>, <a href="/areas/middleton/" class="underline hover:text-navy-900">Middleton</a>, <a href="/areas/oldham" class="underline hover:text-navy-900">Oldham</a> — <a href="/areas/" class="underline hover:text-navy-900">see all {site.areas.length} areas</a>.</p>
+    <p class="mt-2 text-slate-700">Lees, Springhead, Saddleworth, Oldham, Moorside — <a href="/areas/" class="underline hover:text-navy-900">see all areas</a>.</p>
 
     <div class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
       <h2 class="font-display text-2xl text-navy-900">Free quote for {area}</h2>

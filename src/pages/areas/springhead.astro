@@ -5,7 +5,7 @@ import QuoteForm from '../../components/QuoteForm.astro';
 import { site } from '../../content/site';
 import { breadcrumbSchema } from '../../lib/schema';
 
-const area = 'Chadderton';
+const area = 'Springhead';
 const slug = area.toLowerCase();
 const path = `/areas/${slug}/`;
 const url = `${site.url}${path}`;
@@ -16,8 +16,8 @@ const schemas = [breadcrumbSchema([
 ])];
 ---
 <Page
-  title={`Cleaners in Chadderton, Oldham | From £18/hr | Omni Shine`}
-  description={`Home, office and end-of-tenancy cleaning in Chadderton, Hollinwood and Broadway. Family-run, eco-friendly, free quotes.`}
+  title={`Cleaners in Springhead, Oldham | From £18/hr | Omni Shine`}
+  description={`Domestic and end-of-tenancy cleaning in Springhead. Family-run, eco-friendly, weekend slots, fast quotes within two working hours.`}
   path={path}
   schemas={schemas}
 >
@@ -26,7 +26,7 @@ const schemas = [breadcrumbSchema([
   <section class="mx-auto max-w-3xl px-4 py-12">
     <h1 class="font-display text-4xl md:text-5xl text-navy-900">Cleaners in {area}</h1>
     <p class="mt-5 text-lg text-slate-700 leading-relaxed">
-      We clean homes, offices and rentals across <strong>Chadderton, Hollinwood, Broadway and Mills Hill</strong> — a quick run off the A627(M) from our base. Whether it's a weekly top-over, a post-tenant turnover, or a deep refresh before you sell, we turn up on time and do it properly.
+      <strong>Springhead</strong> sits between Oldham town and Saddleworth, a quiet residential village along Oldham Road and St John Street. Most of our Springhead clients book weekly or fortnightly domestic cleans — we batch the area with Lees and Grotton on the same evenings, which keeps slots reliable and travel time low.
     </p>
 
     <h2 class="mt-12 font-display text-2xl text-navy-900">Services available in {area}</h2>
@@ -40,11 +40,14 @@ const schemas = [breadcrumbSchema([
       ))}
     </ul>
 
-    <h2 class="mt-12 font-display text-2xl text-navy-900">Chadderton landlords and letting agents</h2>
-    <p class="mt-4 text-slate-700">We run a lot of end-of-tenancy work along the Chadderton–Failsworth corridor. Fixed prices, detailed inventory-standard checklists, and a free 72-hour re-clean if your check-out inventory clerk flags anything.</p>
+    <h2 class="mt-12 font-display text-2xl text-navy-900">Reliability is the whole point</h2>
+    <p class="mt-4 text-slate-700">Springhead is a residential commuter village — most of our clients here are working families. The reason they pick us is that we turn up when we say we will. If we're going to be late, we tell you. If we can't make a slot, we rearrange properly. No silent no-shows.</p>
+
+    <h2 class="mt-10 font-display text-2xl text-navy-900">Get the same cleaner each visit</h2>
+    <p class="mt-4 text-slate-700">For recurring cleans we keep the same cleaner on your job wherever possible. After a few visits they'll know which cupboards hold what, how you like the towels folded, and which surfaces need extra care.</p>
 
     <h2 class="mt-12 font-display text-2xl text-navy-900">Nearby areas we also cover</h2>
-    <p class="mt-2 text-slate-700"><a href="/areas/failsworth/" class="underline hover:text-navy-900">Failsworth</a>, <a href="/areas/royton/" class="underline hover:text-navy-900">Royton</a>, <a href="/areas/moorside/" class="underline hover:text-navy-900">Moorside</a>, <a href="/areas/middleton/" class="underline hover:text-navy-900">Middleton</a>, <a href="/areas/oldham" class="underline hover:text-navy-900">Oldham</a> — <a href="/areas/" class="underline hover:text-navy-900">see all {site.areas.length} areas</a>.</p>
+    <p class="mt-2 text-slate-700">Lees, Grotton, Saddleworth, Oldham, Uppermill — <a href="/areas/" class="underline hover:text-navy-900">see all areas</a>.</p>
 
     <div class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
       <h2 class="font-display text-2xl text-navy-900">Free quote for {area}</h2>

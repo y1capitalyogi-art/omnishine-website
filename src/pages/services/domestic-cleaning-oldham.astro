@@ -75,12 +75,17 @@ const schemas = [
       <li><strong>Feedback welcome.</strong> Not quite right? 72-hour re-clean at no charge.</li>
     </ol>
 
-    <h2 class="mt-14 font-display text-2xl text-navy-900">Domestic cleaning across Oldham &amp; Rochdale</h2>
+    <h2 class="mt-14 font-display text-2xl text-navy-900">Domestic cleaning across Oldham, Rochdale &amp; Tameside</h2>
     <p class="mt-4 text-slate-700">We cover <strong>{site.areas.length} towns</strong> including {site.areas.slice(0, -1).join(', ')} and {site.areas.at(-1)}.</p>
     <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
       {site.areaPages.map(a => <AreaCard href={`/areas/${a.toLowerCase()}/`} name={a} />)}
     </div>
     <p class="mt-4 text-sm"><a href="/areas/" class="text-navy-700 font-medium hover:underline">See all {site.areas.length} areas →</a></p>
+
+    <div class="mt-8 rounded-xl border border-gold-400/40 bg-gold-400/10 p-5">
+      <h3 class="font-semibold text-navy-900">Looking for a town-specific page?</h3>
+      <p class="mt-2 text-sm text-slate-700">For working families: <a href="/services/domestic-cleaning-royton/" class="font-semibold underline hover:text-navy-900">domestic cleaning in Royton</a> — same £18/hr, dedicated info on slots and routines for Royton, Heyside and Thornham.</p>
+    </div>
 
     <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions about domestic cleaning in Oldham</h2>
     <div class="mt-4"><FaqList items={localFaqs} /></div>

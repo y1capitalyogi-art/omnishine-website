@@ -87,9 +87,18 @@ const schemas = [
     <p class="mt-4 text-slate-700">If your letting agent flags any cleaning issue during check-out, tell us within 72 hours and we will return to re-clean the flagged areas at no extra charge. This is the service you are paying for — we stand behind it.</p>
 
     <h2 class="mt-14 font-display text-2xl text-navy-900">Areas we cover for end-of-tenancy</h2>
-    <p class="mt-4 text-slate-700">All {site.areas.length} towns in the Oldham and Rochdale boroughs.</p>
+    <p class="mt-4 text-slate-700">All {site.areas.length} towns in the Oldham, Rochdale and Tameside boroughs.</p>
     <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
       {site.areaPages.map(a => <AreaCard href={`/areas/${a.toLowerCase()}/`} name={a} />)}
+    </div>
+
+    <div class="mt-8 rounded-xl border border-gold-400/40 bg-gold-400/10 p-5">
+      <h3 class="font-semibold text-navy-900">Need an area-specific quote?</h3>
+      <p class="mt-2 text-sm text-slate-700">We've published dedicated end-of-tenancy pages for the busiest local rental markets:</p>
+      <ul class="mt-3 space-y-1.5 text-sm">
+        <li>✦ <a href="/services/end-of-tenancy-cleaning-saddleworth/" class="font-semibold underline hover:text-navy-900">End of tenancy cleaning in Saddleworth</a> — for Uppermill, Greenfield, Delph, Dobcross, Diggle</li>
+        <li>✦ <a href="/services/end-of-tenancy-cleaning-rochdale/" class="font-semibold underline hover:text-navy-900">End of tenancy cleaning in Rochdale</a> — for the wider Rochdale rental and student market</li>
+      </ul>
     </div>
 
     <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions</h2>
