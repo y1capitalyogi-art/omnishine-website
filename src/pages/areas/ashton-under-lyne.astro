@@ -1,9 +1,8 @@
 ---
-import Page from '../../layouts/Page.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import QuoteForm from '../../components/QuoteForm.astro';
+import AreaPageLayout from '../../layouts/AreaPageLayout.astro';
 import { site } from '../../content/site';
 import { breadcrumbSchema } from '../../lib/schema';
+import office from '../../assets/photos/office.jpg';
 
 const area = 'Ashton-under-Lyne';
 const slug = 'ashton-under-lyne';
@@ -15,46 +14,33 @@ const schemas = [breadcrumbSchema([
   { name: area, url },
 ])];
 ---
-<Page
+<AreaPageLayout
+  area={area}
+  slug={slug}
+  borough="Tameside borough"
   title={`Cleaners in Ashton-under-Lyne | From £18/hr | Omni Shine`}
   description={`Domestic, commercial and end-of-tenancy cleaning in Ashton-under-Lyne. Family-run, eco-friendly, free quotes within two working hours.`}
-  path={path}
   schemas={schemas}
+  image={office}
+  imageAlt="Modern Ashton-under-Lyne office ready for the morning"
+  intro="Ashton-under-Lyne sits in Tameside, a short hop from us via the M60. We cover the town centre, Hurst, Smallshaw, Hartshead and out toward Mossley — domestic cleans for family homes, commercial work for offices and salons around the market hall, and a steady book of end-of-tenancy work for the student and HMO market near Tameside College."
 >
-  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Areas',href:'/areas/'},{name: area}]} />
+  <h2 class="font-display text-2xl text-navy-900">Big rental market, fast turnarounds</h2>
+  <p class="mt-4 text-slate-700 leading-relaxed">Ashton has a substantial rental market — student housing near Tameside College, HMOs, terraced lets across Hurst and Hartshead. We're set up for fast turnovers between tenants: same-day starts at the weekend, multi-cleaner teams for larger properties, and our standard 72-hour re-clean guarantee.</p>
 
-  <section class="mx-auto max-w-3xl px-4 py-12">
-    <h1 class="font-display text-4xl md:text-5xl text-navy-900">Cleaners in {area}</h1>
-    <p class="mt-5 text-lg text-slate-700 leading-relaxed">
-      <strong>Ashton-under-Lyne</strong> sits in Tameside, a short hop from us via the M60. We cover the town centre, <strong>Hurst, Smallshaw, Hartshead</strong> and out toward Mossley — domestic cleans for family homes, commercial work for offices and salons around the market hall, and a steady book of end-of-tenancy work for the student and HMO market near Tameside College.
-    </p>
+  <h2 class="mt-12 font-display text-2xl text-navy-900">Travel and timing</h2>
+  <p class="mt-4 text-slate-700 leading-relaxed">We batch Ashton bookings on specific evenings to keep travel overhead low and deliver reliable weekly slots — typically Mondays and Saturdays. No travel surcharge within Ashton itself.</p>
 
-    <h2 class="mt-12 font-display text-2xl text-navy-900">Services available in {area}</h2>
-    <ul class="mt-4 grid gap-2 text-slate-700 md:grid-cols-2">
-      {site.services.map(s => (
-        <li class="flex items-start gap-2">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-gold-500 mt-0.5 shrink-0" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <a href={`/services/${s.slug}/`} class="underline decoration-slate-200 underline-offset-4 hover:text-navy-900 hover:decoration-navy-700">{s.name}</a>
-          <span class="text-slate-500 text-sm">· from £{s.from}</span>
-        </li>
-      ))}
-    </ul>
+  <div class="mt-8 rounded-xl border border-gold-400/40 bg-gold-400/10 p-5">
+    <h3 class="font-semibold text-navy-900">Ashton-specific service page</h3>
+    <p class="mt-2 text-sm text-slate-700">Independent salons, café fit-outs and offices around Stamford Street: see <a href="/services/commercial-cleaning-ashton-under-lyne/" class="font-semibold underline hover:text-navy-900">commercial cleaning in Ashton-under-Lyne</a> from £22/hr — evenings, weekends, monthly invoicing.</p>
+  </div>
 
-    <h2 class="mt-12 font-display text-2xl text-navy-900">Big rental market, fast turnarounds</h2>
-    <p class="mt-4 text-slate-700">Ashton has a substantial rental market — student housing near Tameside College, HMOs, terraced lets across Hurst and Hartshead. We're set up for fast turnovers between tenants: same-day starts at the weekend, multi-cleaner teams for larger properties, and our standard 72-hour re-clean guarantee. See our <a href="/services/end-of-tenancy-cleaning-oldham/" class="underline hover:text-navy-900">end-of-tenancy service</a> for the full spec.</p>
-
-    <h2 class="mt-10 font-display text-2xl text-navy-900">Commercial cleaning</h2>
-    <p class="mt-4 text-slate-700">Independent salons, café fit-outs and small offices across Ashton get our standard <a href="/services/commercial-cleaning-oldham/" class="underline hover:text-navy-900">commercial cleaning</a> from £22/hr — evenings and weekends as standard, monthly invoicing available.</p>
-
-    <h2 class="mt-12 font-display text-2xl text-navy-900">Travel and timing</h2>
-    <p class="mt-4 text-slate-700">We batch Ashton bookings on specific evenings to keep travel overhead low and deliver reliable weekly slots — typically Mondays and Saturdays. No travel surcharge within Ashton itself.</p>
-
-    <h2 class="mt-12 font-display text-2xl text-navy-900">Nearby areas we also cover</h2>
-    <p class="mt-2 text-slate-700"><a href="/areas/mossley/" class="underline hover:text-navy-900">Mossley</a>, <a href="/areas/saddleworth/" class="underline hover:text-navy-900">Saddleworth</a>, <a href="/areas/failsworth/" class="underline hover:text-navy-900">Failsworth</a>, <a href="/areas/oldham" class="underline hover:text-navy-900">Oldham</a> — <a href="/areas/" class="underline hover:text-navy-900">see all areas</a>.</p>
-
-    <div class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
-      <h2 class="font-display text-2xl text-navy-900">Free quote for {area}</h2>
-      <div class="mt-6"><QuoteForm /></div>
-    </div>
-  </section>
-</Page>
+  <p slot="nearby" class="mt-2 text-slate-700">
+    <a href="/areas/mossley/" class="underline hover:text-navy-900">Mossley</a>,
+    <a href="/areas/saddleworth/" class="underline hover:text-navy-900">Saddleworth</a>,
+    <a href="/areas/failsworth/" class="underline hover:text-navy-900">Failsworth</a>,
+    <a href="/areas/oldham" class="underline hover:text-navy-900">Oldham</a> —
+    <a href="/areas/" class="underline hover:text-navy-900">see all {site.areas.length} areas</a>.
+  </p>
+</AreaPageLayout>

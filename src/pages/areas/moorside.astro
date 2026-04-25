@@ -1,13 +1,11 @@
 ---
-import Page from '../../layouts/Page.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import QuoteForm from '../../components/QuoteForm.astro';
+import AreaPageLayout from '../../layouts/AreaPageLayout.astro';
 import { site } from '../../content/site';
 import { breadcrumbSchema } from '../../lib/schema';
+import bathroom from '../../assets/photos/bathroom.jpg';
 
 const area = 'Moorside';
-const slug = area.toLowerCase();
-const path = `/areas/${slug}/`;
+const path = `/areas/${area.toLowerCase()}/`;
 const url = `${site.url}${path}`;
 const schemas = [breadcrumbSchema([
   { name: 'Home', url: `${site.url}/` },
@@ -15,43 +13,28 @@ const schemas = [breadcrumbSchema([
   { name: area, url },
 ])];
 ---
-<Page
+<AreaPageLayout
+  area={area}
+  borough="Oldham borough"
   title={`Cleaners in Moorside, Oldham | From £18/hr | Omni Shine`}
   description={`Cleaning across Moorside — domestic, deep and end-of-tenancy from £18/hr. Family-run, eco-friendly products, same cleaner each visit.`}
-  path={path}
   schemas={schemas}
+  image={bathroom}
+  imageAlt="Spotless bathroom after a Moorside deep clean"
+  intro="Moorside climbs the hill east of Oldham toward the Pennine moors — Ripponden Road, Roundthorn, Higginshaw. The housing stock is a mix: stone-fronted Victorian semis, post-war estates, and a few modern infill developments. We clean the lot, weekly and fortnightly."
 >
-  <Breadcrumbs items={[{name:'Home',href:'/'},{name:'Areas',href:'/areas/'},{name: area}]} />
+  <h2 class="font-display text-2xl text-navy-900">Hilly streets, big windows</h2>
+  <p class="mt-4 text-slate-700 leading-relaxed">A lot of Moorside houses have full-height bay windows facing east — beautiful in the morning, dust-magnets the rest of the time. Interior glass and sills are part of every standard visit; full external window cleans we'll quote separately.</p>
 
-  <section class="mx-auto max-w-3xl px-4 py-12">
-    <h1 class="font-display text-4xl md:text-5xl text-navy-900">Cleaners in {area}</h1>
-    <p class="mt-5 text-lg text-slate-700 leading-relaxed">
-      <strong>Moorside</strong> climbs the hill east of Oldham toward the Pennine moors — Ripponden Road, Roundthorn, Higginshaw. The housing stock is a mix: stone-fronted Victorian semis, post-war estates, and a few modern infill developments. We clean the lot, weekly and fortnightly.
-    </p>
+  <h2 class="mt-12 font-display text-2xl text-navy-900">Mid-week evening slots</h2>
+  <p class="mt-4 text-slate-700 leading-relaxed">For Moorside we usually offer Tuesday or Thursday evenings on a regular schedule. Weekend slots fill fastest — get in touch as soon as you've decided you want one and we'll squeeze you into the next opening.</p>
 
-    <h2 class="mt-12 font-display text-2xl text-navy-900">Services available in {area}</h2>
-    <ul class="mt-4 grid gap-2 text-slate-700 md:grid-cols-2">
-      {site.services.map(s => (
-        <li class="flex items-start gap-2">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-gold-500 mt-0.5 shrink-0" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <a href={`/services/${s.slug}/`} class="underline decoration-slate-200 underline-offset-4 hover:text-navy-900 hover:decoration-navy-700">{s.name}</a>
-          <span class="text-slate-500 text-sm">· from £{s.from}</span>
-        </li>
-      ))}
-    </ul>
-
-    <h2 class="mt-12 font-display text-2xl text-navy-900">Hilly streets, big windows</h2>
-    <p class="mt-4 text-slate-700">A lot of Moorside houses have full-height bay windows facing east — beautiful in the morning, dust-magnets the rest of the time. Interior glass and sills are part of every standard visit; full external window cleans we'll quote separately.</p>
-
-    <h2 class="mt-10 font-display text-2xl text-navy-900">Mid-week evening slots</h2>
-    <p class="mt-4 text-slate-700">For Moorside we usually offer Tuesday or Thursday evenings on a regular schedule. Weekend slots fill fastest — get in touch as soon as you've decided you want one and we'll squeeze you into the next opening.</p>
-
-    <h2 class="mt-12 font-display text-2xl text-navy-900">Nearby areas we also cover</h2>
-    <p class="mt-2 text-slate-700">Oldham, Lees, Failsworth, Royton, Springhead — <a href="/areas/" class="underline hover:text-navy-900">see all areas</a>.</p>
-
-    <div class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
-      <h2 class="font-display text-2xl text-navy-900">Free quote for {area}</h2>
-      <div class="mt-6"><QuoteForm /></div>
-    </div>
-  </section>
-</Page>
+  <p slot="nearby" class="mt-2 text-slate-700">
+    <a href="/areas/oldham" class="underline hover:text-navy-900">Oldham</a>,
+    <a href="/areas/lees/" class="underline hover:text-navy-900">Lees</a>,
+    <a href="/areas/failsworth/" class="underline hover:text-navy-900">Failsworth</a>,
+    <a href="/areas/royton/" class="underline hover:text-navy-900">Royton</a>,
+    <a href="/areas/springhead/" class="underline hover:text-navy-900">Springhead</a> —
+    <a href="/areas/" class="underline hover:text-navy-900">see all {site.areas.length} areas</a>.
+  </p>
+</AreaPageLayout>
