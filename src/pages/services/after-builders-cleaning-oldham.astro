@@ -5,6 +5,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
 import FaqList from '../../components/FaqList.astro';
 import AreaCard from '../../components/AreaCard.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 import { site } from '../../content/site';
 import { serviceSchema, breadcrumbSchema, faqSchema } from '../../lib/schema';
 import afterBuilders from '../../assets/photos/after-builders.jpg';
@@ -44,8 +45,8 @@ const schemas = [
 ];
 ---
 <Page
-  title="After Builders Cleaning in Oldham | From £200 | Omni Shine"
-  description="Post-renovation cleans in Oldham from £200. HEPA-grade dust removal, paint residue, full finish — we hand your space back move-in ready."
+  title="After Builders Cleaning Oldham | HEPA-Grade £200"
+  description="Post-renovation cleaning in Oldham from £200. HEPA-grade vacuums for fine construction dust, paint and silicone residue removed, move-in ready finish."
   path={path}
   schemas={schemas}
 >
@@ -98,6 +99,8 @@ const schemas = [
 
     <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions</h2>
     <div class="mt-4"><FaqList items={localFaqs} /></div>
+
+    <RelatedServices currentSlug={s.slug} sub="Once the dust is gone, we can keep the property pristine — see our other services." />
 
     <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
       <h2 class="font-display text-2xl text-navy-900">Get an after-builders quote</h2>

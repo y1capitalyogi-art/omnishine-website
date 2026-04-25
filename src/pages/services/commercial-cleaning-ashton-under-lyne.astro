@@ -4,6 +4,7 @@ import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
 import FaqList from '../../components/FaqList.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 import { site } from '../../content/site';
 import { breadcrumbSchema, faqSchema } from '../../lib/schema';
 import office from '../../assets/photos/office.jpg';
@@ -67,8 +68,8 @@ const schemas = [
 ];
 ---
 <Page
-  title="Commercial Cleaning Ashton-under-Lyne | From £22/hr"
-  description="Office, retail and salon cleaning across Ashton-under-Lyne, Hurst, Smallshaw and wider Tameside. From £22/hr, evenings and weekends, monthly invoicing."
+  title="Commercial Cleaners Ashton-under-Lyne | £22/hr"
+  description="Office, retail and salon cleaners in Ashton-under-Lyne, Hurst, Smallshaw and Tameside. £22/hr, evenings and weekends, monthly invoicing on 7-day terms."
   path={path}
   schemas={schemas}
 >
@@ -133,6 +134,8 @@ const schemas = [
         <li>✦ <a href="/services/commercial-cleaning-oldham/" class="font-semibold underline hover:text-navy-900">Commercial cleaning — wider Oldham</a></li>
       </ul>
     </div>
+
+    <RelatedServices currentSlug="commercial-cleaning-ashton-under-lyne" sub="Beyond commercial — domestic, deep and end-of-tenancy cleaning across Ashton and Tameside." />
 
     <div id="quote" class="mt-12 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
       <h2 class="font-display text-2xl text-navy-900">Get your Ashton commercial cleaning quote</h2>

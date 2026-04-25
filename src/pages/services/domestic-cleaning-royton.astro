@@ -4,6 +4,7 @@ import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
 import FaqList from '../../components/FaqList.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 import { site } from '../../content/site';
 import { breadcrumbSchema, faqSchema } from '../../lib/schema';
 import heroHome from '../../assets/photos/hero-home.jpg';
@@ -65,8 +66,8 @@ const schemas = [
 ];
 ---
 <Page
-  title="Domestic Cleaning in Royton | From £18/hr | Omni Shine"
-  description="Weekly and fortnightly domestic cleaning in Royton, Heyside and Thornham from £18/hr. Same cleaner each visit, eco-friendly products, weekend slots."
+  title="Domestic Cleaner Royton | Weekly £18/hr | Omni Shine"
+  description="Reliable domestic cleaner in Royton, Heyside and Thornham — £18/hr, weekly or fortnightly, same cleaner each visit. Eco-friendly products, weekends included."
   path={path}
   schemas={schemas}
 >
@@ -121,6 +122,8 @@ const schemas = [
 
     <h2 class="mt-14 font-display text-2xl text-navy-900">Cleaners across the wider area</h2>
     <p class="mt-4 text-slate-700">Beyond Royton itself we cover <a href="/areas/shaw/" class="underline hover:text-navy-900">Shaw</a>, <a href="/areas/chadderton/" class="underline hover:text-navy-900">Chadderton</a>, <a href="/areas/failsworth/" class="underline hover:text-navy-900">Failsworth</a>, <a href="/areas/moorside/" class="underline hover:text-navy-900">Moorside</a> and 10+ other towns — <a href="/areas/" class="underline hover:text-navy-900">see all areas</a>.</p>
+
+    <RelatedServices currentSlug="domestic-cleaning-royton" sub="Beyond regular weekly cleans — see all our services." />
 
     <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
       <h2 class="font-display text-2xl text-navy-900">Get your Royton domestic cleaning quote</h2>

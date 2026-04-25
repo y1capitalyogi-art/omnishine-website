@@ -4,6 +4,7 @@ import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
 import FaqList from '../../components/FaqList.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 import { site } from '../../content/site';
 import { breadcrumbSchema, faqSchema } from '../../lib/schema';
 import stoneCottage from '../../assets/photos/stone-cottage.jpg';
@@ -76,8 +77,8 @@ const schemas = [
 ];
 ---
 <Page
-  title="End of Tenancy Cleaning Saddleworth | From £180"
-  description="End-of-tenancy cleaners across Saddleworth — Uppermill, Greenfield, Delph, Dobcross, Diggle. From £180, 72-hour re-clean guarantee, holiday-let turnovers."
+  title="End of Tenancy Cleaning Saddleworth | £180 Fixed"
+  description="Deposit-back EOT cleaning across Saddleworth villages — Uppermill, Greenfield, Delph, Dobcross, Diggle. £180 fixed, 72-hr re-clean, holiday-let turnovers."
   path={path}
   schemas={schemas}
 >
@@ -140,6 +141,8 @@ const schemas = [
 
     <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions about end-of-tenancy in Saddleworth</h2>
     <div class="mt-4"><FaqList items={localFaqs} /></div>
+
+    <RelatedServices currentSlug="end-of-tenancy-cleaning-saddleworth" sub="Other cleaning services we offer in and around Saddleworth." />
 
     <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
       <h2 class="font-display text-2xl text-navy-900">Book your Saddleworth end-of-tenancy clean</h2>

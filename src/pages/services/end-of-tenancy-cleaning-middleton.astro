@@ -4,6 +4,7 @@ import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
 import FaqList from '../../components/FaqList.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 import { site } from '../../content/site';
 import { breadcrumbSchema, faqSchema } from '../../lib/schema';
 import kitchen from '../../assets/photos/kitchen.jpg';
@@ -69,8 +70,8 @@ const schemas = [
 ];
 ---
 <Page
-  title="End of Tenancy Cleaning Middleton | From £180 | Omni Shine"
-  description="Deposit-back end-of-tenancy cleans in Middleton — Alkrington, Rhodes, Boarshaw, Langley. From £180 fixed, 72-hour re-clean guarantee, fast turnarounds."
+  title="End of Tenancy Cleaning Middleton | £180 Fixed Quote"
+  description="EOT cleaning across Middleton — Alkrington, Rhodes, Boarshaw, Langley. £180 fixed, 72-hr re-clean guarantee, multi-cleaner teams for HMOs and student lets."
   path={path}
   schemas={schemas}
 >
@@ -135,6 +136,8 @@ const schemas = [
         <li>✦ <a href="/services/end-of-tenancy-cleaning-oldham/" class="font-semibold underline hover:text-navy-900">End of tenancy in Oldham</a> — same service, broader area</li>
       </ul>
     </div>
+
+    <RelatedServices currentSlug="end-of-tenancy-cleaning-middleton" sub="Other cleaning services across Middleton, Rochdale and Oldham." />
 
     <div id="quote" class="mt-12 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
       <h2 class="font-display text-2xl text-navy-900">Book your Middleton end-of-tenancy clean</h2>

@@ -5,6 +5,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
 import FaqList from '../../components/FaqList.astro';
 import AreaCard from '../../components/AreaCard.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 import { site } from '../../content/site';
 import { serviceSchema, breadcrumbSchema, faqSchema } from '../../lib/schema';
 import livingRoom from '../../assets/photos/living-room.jpg';
@@ -41,8 +42,8 @@ const schemas = [
 ];
 ---
 <Page
-  title="Domestic Cleaning in Oldham | From £18/hr | Omni Shine"
-  description="Weekly, fortnightly and one-off domestic cleaning across Oldham from £18/hr. Eco-friendly products, weekend slots, and the same cleaner each visit."
+  title="Domestic Cleaner Oldham | £18/hr Weekly | Omni Shine"
+  description="Reliable domestic cleaner in Oldham — £18/hr, two-hour minimum. Weekly, fortnightly, or one-off. Same cleaner each visit, eco-friendly products, weekends included."
   path={path}
   schemas={schemas}
 >
@@ -102,6 +103,8 @@ const schemas = [
 
     <h2 class="mt-14 font-display text-2xl text-navy-900">Common questions about domestic cleaning in Oldham</h2>
     <div class="mt-4"><FaqList items={localFaqs} /></div>
+
+    <RelatedServices currentSlug={s.slug} sub="Whatever you need cleaned, we cover it." />
 
     <div id="quote" class="mt-16 rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
       <h2 class="font-display text-2xl text-navy-900">Get your free domestic-cleaning quote</h2>
