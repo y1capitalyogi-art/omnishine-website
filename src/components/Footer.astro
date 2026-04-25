@@ -3,69 +3,113 @@ import { site } from '../content/site';
 const currentYear = new Date().getFullYear();
 ---
 <footer class="mt-24 bg-navy-950 text-slate-100">
-  <div class="mx-auto max-w-6xl px-4 py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-    <div>
+  <!-- CTA strip -->
+  <div class="border-b border-white/10 bg-gradient-to-r from-navy-900 to-navy-950">
+    <div class="mx-auto max-w-7xl px-4 py-10 md:py-12 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+      <div>
+        <h2 class="font-display text-2xl md:text-3xl text-white">Ready for a sparkling clean?</h2>
+        <p class="mt-2 text-sm md:text-base text-slate-300 max-w-xl">Free quote in two working hours during opening times. No obligation, no spam.</p>
+      </div>
+      <a href="/contact/" class="justify-self-start md:justify-self-end inline-flex items-center gap-2 rounded-lg bg-gold-400 px-6 py-3 text-base font-semibold text-navy-950 shadow-lg hover:bg-gold-500 transition whitespace-nowrap">
+        Get a Free Quote
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main footer columns -->
+  <div class="mx-auto max-w-7xl px-4 py-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
+    <!-- Brand -->
+    <div class="lg:col-span-4">
       <div class="flex items-center gap-2 font-display text-xl font-semibold text-white">
-        <img src="/favicon.svg" alt="" width="28" height="28" class="w-7 h-7" />
+        <img src="/favicon.svg" alt="" width="32" height="32" class="w-8 h-8" />
         <span>Omni Shine</span>
       </div>
-      <p class="mt-4 text-sm text-slate-300 max-w-xs">
-        Family-run cleaning service in Oldham and surrounding towns. Founded {site.foundingYear} by {site.founder}.
+      <p class="mt-4 text-sm text-slate-300 max-w-xs leading-relaxed">
+        Family-run cleaning service across Oldham, Rochdale and Tameside. Founded {site.foundingYear} by {site.founder}.
       </p>
-      <p class="mt-4 text-sm">
-        <a href={`mailto:${site.email}`} class="underline decoration-gold-400/60 underline-offset-4 hover:text-white">{site.email}</a>
-      </p>
-      <p class="mt-2 text-xs text-slate-400">
-        Mon–Fri 5pm–9pm · Sat–Sun 8am–9pm
-      </p>
+      <dl class="mt-6 space-y-3 text-sm">
+        <div>
+          <dt class="text-xs uppercase tracking-wider text-slate-400">Email</dt>
+          <dd class="mt-1"><a href={`mailto:${site.email}`} class="font-medium text-white hover:text-gold-400 transition">{site.email}</a></dd>
+        </div>
+        <div>
+          <dt class="text-xs uppercase tracking-wider text-slate-400">Hours</dt>
+          <dd class="mt-1 text-slate-200">
+            <span class="block">Mon–Fri · 5pm – 9pm</span>
+            <span class="block">Sat–Sun · 8am – 9pm</span>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-xs uppercase tracking-wider text-slate-400">Find us</dt>
+          <dd class="mt-1">
+            <a href={site.googleBusinessUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-slate-200 hover:text-gold-400 transition">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Business Profile
+            </a>
+          </dd>
+        </div>
+      </dl>
     </div>
 
-    <div>
-      <h2 class="text-sm font-semibold tracking-wide uppercase text-white/90">Services</h2>
-      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+    <!-- Services -->
+    <div class="lg:col-span-3">
+      <h2 class="text-xs font-semibold tracking-widest uppercase text-gold-400">Services</h2>
+      <ul class="mt-4 space-y-2.5 text-sm text-slate-300">
         {site.services.map(s => (
-          <li><a href={`/services/${s.slug}/`} class="hover:text-white">{s.name}</a></li>
+          <li><a href={`/services/${s.slug}/`} class="hover:text-white transition">{s.name} <span class="text-slate-500">· £{s.from}</span></a></li>
+        ))}
+      </ul>
+      <h2 class="mt-8 text-xs font-semibold tracking-widest uppercase text-gold-400">Service × Area</h2>
+      <ul class="mt-4 space-y-2.5 text-sm text-slate-300">
+        {site.serviceAreaCombos.map(c => (
+          <li><a href={`/services/${c.slug}/`} class="hover:text-white transition">{c.label}</a></li>
         ))}
       </ul>
     </div>
 
-    <div>
-      <h2 class="text-sm font-semibold tracking-wide uppercase text-white/90">Popular areas</h2>
-      <ul class="mt-4 space-y-2 text-sm text-slate-300">
-        <li><a href="/areas/" class="hover:text-white font-medium">All {site.areas.length} areas</a></li>
-        {site.areaPages.slice(0, 8).map(a => (
-          <li><a href={`/areas/${a.toLowerCase()}/`} class="hover:text-white">Cleaners in {a}</a></li>
-        ))}
-      </ul>
-      <h2 class="mt-6 text-sm font-semibold tracking-wide uppercase text-white/90">Saddleworth &amp; further out</h2>
-      <ul class="mt-4 space-y-2 text-sm text-slate-300">
-        {site.areaPages.slice(8).map(a => (
-          <li><a href={`/areas/${a.toLowerCase()}/`} class="hover:text-white">Cleaners in {a}</a></li>
+    <!-- Areas -->
+    <div class="lg:col-span-3">
+      <h2 class="text-xs font-semibold tracking-widest uppercase text-gold-400">Areas we cover</h2>
+      <p class="mt-3 text-xs text-slate-400">{site.areas.length} towns across Oldham, Rochdale &amp; Tameside</p>
+      <ul class="mt-4 space-y-2.5 text-sm text-slate-300">
+        <li><a href="/areas/" class="font-semibold text-white hover:text-gold-400 transition">All areas →</a></li>
+        {site.areaPages.map(a => (
+          <li><a href={`/areas/${a.toLowerCase()}/`} class="hover:text-white transition">{a}</a></li>
         ))}
       </ul>
     </div>
 
-    <div>
-      <h2 class="text-sm font-semibold tracking-wide uppercase text-white/90">Company</h2>
-      <ul class="mt-4 space-y-2 text-sm text-slate-300">
-        <li><a href="/about/" class="hover:text-white">About</a></li>
-        <li><a href="/pricing/" class="hover:text-white">Pricing</a></li>
-        <li><a href="/faq/" class="hover:text-white">FAQ</a></li>
-        <li><a href="/contact/" class="hover:text-white">Contact</a></li>
-        <li><a href={site.googleBusinessUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white">Google Business Profile ↗</a></li>
+    <!-- Quick links -->
+    <div class="lg:col-span-2">
+      <h2 class="text-xs font-semibold tracking-widest uppercase text-gold-400">Company</h2>
+      <ul class="mt-4 space-y-2.5 text-sm text-slate-300">
+        <li><a href="/about/" class="hover:text-white transition">About</a></li>
+        <li><a href="/pricing/" class="hover:text-white transition">Pricing</a></li>
+        <li><a href="/faq/" class="hover:text-white transition">FAQ</a></li>
+        <li><a href="/contact/" class="hover:text-white transition">Contact</a></li>
+      </ul>
+      <h2 class="mt-8 text-xs font-semibold tracking-widest uppercase text-gold-400">Legal</h2>
+      <ul class="mt-4 space-y-2.5 text-sm text-slate-300">
+        <li><a href="/privacy/" class="hover:text-white transition">Privacy</a></li>
+        <li><a href="/terms/" class="hover:text-white transition">Terms</a></li>
+        <li><a href="/complaints/" class="hover:text-white transition">Complaints</a></li>
+        <li><a href="/cookies/" class="hover:text-white transition">Cookies</a></li>
       </ul>
     </div>
   </div>
 
+  <!-- Bottom bar -->
   <div class="border-t border-white/10">
-    <div class="mx-auto max-w-6xl px-4 py-5 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between text-xs text-slate-400">
+    <div class="mx-auto max-w-7xl px-4 py-5 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between text-xs text-slate-400">
       <p>&copy; {currentYear} {site.name}. All rights reserved.</p>
-      <ul class="flex flex-wrap gap-x-5 gap-y-1">
-        <li><a href="/privacy/" class="hover:text-slate-200">Privacy</a></li>
-        <li><a href="/terms/" class="hover:text-slate-200">Terms</a></li>
-        <li><a href="/complaints/" class="hover:text-slate-200">Complaints</a></li>
-        <li><a href="/cookies/" class="hover:text-slate-200">Cookies</a></li>
-      </ul>
+      <p class="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <span>Family-run cleaning service in Oldham</span>
+        <span aria-hidden="true">·</span>
+        <span>Eco-friendly products</span>
+        <span aria-hidden="true">·</span>
+        <span>72-hour re-clean guarantee</span>
+      </p>
     </div>
   </div>
 </footer>
