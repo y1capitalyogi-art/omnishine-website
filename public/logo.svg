@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" role="img" aria-label="Omni Shine — Professional Cleaning">
+  <defs>
+    <linearGradient id="markBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="0.55" stop-color="#172554"/>
+      <stop offset="1" stop-color="#0c1340"/>
+    </linearGradient>
+    <linearGradient id="markSparkle" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fef3c7"/>
+      <stop offset="0.5" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+    <radialGradient id="markGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fde68a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shineGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark (icon block, 80x80) -->
+  <g>
+    <rect x="8" y="8" width="80" height="80" rx="18" fill="url(#markBg)"/>
+    <path d="M24 24 Q24 18 30 18 L60 18" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="48" cy="48" r="20" fill="url(#markGlow)"/>
+    <path d="M48 24 L51 44 L72 48 L51 52 L48 72 L45 52 L24 48 L45 44 Z"
+          fill="url(#markSparkle)"
+          stroke="#92400e" stroke-width="0.5" stroke-linejoin="round" stroke-opacity="0.55"/>
+    <path d="M70 30 L71 33.5 L74.5 34.5 L71 35.5 L70 39 L69 35.5 L65.5 34.5 L69 33.5 Z"
+          fill="#fde68a" opacity="0.92"/>
+    <path d="M28 66 L28.7 68.5 L31.2 69.2 L28.7 69.9 L28 72.4 L27.3 69.9 L24.8 69.2 L27.3 68.5 Z"
+          fill="#fde68a" opacity="0.75"/>
+    <circle cx="74" cy="60" r="1.5" fill="#fde68a" opacity="0.7"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(108 0)">
+    <!-- "Omni" — solid navy, regular weight -->
+    <text x="0" y="58" font-family="'Fraunces Variable', Fraunces, Georgia, serif"
+          font-size="46" font-weight="700" fill="#1e3a8a" letter-spacing="-1">
+      Omni
+    </text>
+    <!-- "Shine" — gradient blue, italic -->
+    <text x="150" y="58" font-family="'Fraunces Variable', Fraunces, Georgia, serif"
+          font-size="46" font-weight="700" font-style="italic" fill="url(#shineGrad)" letter-spacing="-0.5">
+      Shine
+    </text>
+    <!-- Sparkle accent over "Shine" -->
+    <path d="M286 14 L287 18 L291 19 L287 20 L286 24 L285 20 L281 19 L285 18 Z"
+          fill="#fbbf24"/>
+    <!-- Tagline -->
+    <text x="2" y="82" font-family="Inter, ui-sans-serif, system-ui, sans-serif"
+          font-size="11" font-weight="600" fill="#64748b" letter-spacing="3">
+      PROFESSIONAL · CLEANING · OLDHAM
+    </text>
+  </g>
+</svg>
