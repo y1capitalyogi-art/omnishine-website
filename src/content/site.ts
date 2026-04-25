@@ -75,6 +75,9 @@ export const site = {
   googleBusinessUrl: 'https://www.google.com/maps/place/Omni+Shine+Cleaning/data=!4m2!3m1!1s0x0:0x8b0c17c468c5a93c',
   // Primary areas that get dedicated pages (others fall back to the hub)
   areaPages: ['Shaw', 'Royton', 'Chadderton', 'Saddleworth', 'Rochdale'] as const,
+  // Cloudflare Turnstile public sitekey (safe to commit — public by design).
+  // The matching secret lives in Cloudflare Pages env vars only.
+  turnstileSitekey: '0x4AAAAAADDBzalRSeJq3Wu9',
 } as const;
 
 export type ServiceSlug = (typeof site.services)[number]['slug'];

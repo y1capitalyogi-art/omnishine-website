@@ -1,6 +1,6 @@
 ---
 import { site } from '../content/site';
-const TURNSTILE_SITEKEY = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '1x00000000000000000000AA';
+const TURNSTILE_SITEKEY = site.turnstileSitekey;
 const services = site.services.map(s => s.name);
 ---
 <form id="quote-form" class="space-y-5" method="POST" action="/api/quote" novalidate>

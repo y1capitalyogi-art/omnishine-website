@@ -180,25 +180,45 @@ export const onRequestPost: PagesFunctionLike = async ({ request, env }) => {
   </div>
 </body></html>`;
 
-  // Fire both — team first (critical), then user confirmation (best-effort)
+  // Fire both — team first (critical), then user confirmation (best-effort).
+  //
+  // Team email:
+  //   To:       info@omnishine.co.uk          (primary inbox)
+  //   Bcc:      sangitachavda11@gmail.com     (owner copy — silent)
+  //   Reply-To: <submitter email>             (lets team click Reply directly to the customer)
+  // The submitter is NOT Bcc'd here, so they don't see this internal reply-to.
+  //
+  // Customer auto-reply (separate email):
+  //   To:       <submitter email>
+  //   From:     info@omnishine.co.uk
+  //   Reply-To: info@omnishine.co.uk          (so when the customer replies, it lands in info@)
+  // Includes a copy of what they submitted, so they have a record.
+
   const teamRes = await sendEmail(
     env,
     ['info@omnishine.co.uk'],
-    ['sangitachavda11@gmail.com', email],
+    ['sangitachavda11@gmail.com'],
     `New quote request: ${service} — ${postcode}`,
     teamHtml,
-    email,
+    email, // Reply-To = customer
   );
 
   if (!teamRes.ok) {
     const err = await teamRes.text().catch(() => '');
-    // Log via console so it's visible in Cloudflare logs
     console.error('Resend team email failed', teamRes.status, err);
     return json({ error: 'Could not send your request. Please email info@omnishine.co.uk directly.' }, 502);
   }
 
-  // User auto-reply — don't fail the whole request if this fails
-  const userRes = await sendEmail(env, [email], [], `We've got your Omni Shine quote request`, userHtml);
+  // User auto-reply — don't fail the whole request if this fails.
+  // Reply-To is explicit so customers replying to the auto-reply hit info@, not the from-domain default.
+  const userRes = await sendEmail(
+    env,
+    [email],
+    [],
+    `We've got your Omni Shine quote request`,
+    userHtml,
+    'info@omnishine.co.uk',
+  );
   if (!userRes.ok) {
     const err = await userRes.text().catch(() => '');
     console.error('Resend user confirmation failed', userRes.status, err);
